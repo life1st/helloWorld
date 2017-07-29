@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width">
+    <title>前端开发实习生_焦洋_重庆邮电大学移通学院</title>
+    <style>
+        *{margin: 0;padding: 0;font-family:"STXihei";}
+        .content{max-width: 700px;width:90%;margin:20px auto;}
+        time{float: right;margin-right: 0.2em;font-size: 15px;font-weight:normal;line-height: inherit;}
+        .title h2{margin:18px 0 5px;border-bottom: 1px solid black;padding-bottom: 4px;}
+        .information h2{border: none;font-size: 28px;}
+        .title h3{margin: 10px 0 2px;font-size: 20px;}
+        .title p{line-height: 26px;font-size: 16px;}
+        .project h4{font-size: 18px;line-height: 24px;margin: 10px 0 4px;white-space: nowrap;font-weight: normal}
+        /*.award p{font-size: 14px;margin:6px 0;}*/
+        .project p {line-height: 26px;font-size: 15px;text-indent: 2em;}
+        a {font-size: 16px;font-weight: normal;color:#000;}
+        a:hover {color:#BEBEBE;}
+    </style>
+</head>
+<body>
+<div class="content">
+    <div class="information title">
+        <h2>焦洋</h2>
+        <p>手机：15922732307 </p>
+        <p>邮箱：Jiaoyangdev@gmail.com</p>
+        <p>期望职位：前端开发工程师</p>
+        <p>重庆邮电大学移通学院 软件工程<time>2014.08 - 2018.06</time></p>
+    </div>
+<!--<div class="award title">
+        <h2>荣誉奖励</h2>
+        <p>校级 第四届双体杯软件开发比赛低年级组 三等奖</p>
+        <p>校级 科技改变未来 海报设计比赛 三等奖</p>
+        <p>校级 学生科技联合会网络学堂工作室 优秀干事</p>
+    </div>-->
+    <div class="exp title">
+        <h2>社团经历</h2>
+        <p>网络学堂工作室 干事<time>2014.09 - 2015.06</time></p>
+        <p>学生科技联合会信息宣传部 部长<time>2015.06 - 2016.06</time></p>
+    </div>
+    <div class="project title">
+        <h2>项目经历</h2>
+        <h3>校内项目</h3>
+        <h4>科联官网：<a href="http://sstu.ytwlxt.com/" target="_blank">http://sstu.ytwlxt.com</a><time>2015.06</time></h4>
+        <p>独立完成项目。该网站是学生科技联合会的宣传和招新网站，在2015招新期间上线了报名功能，该渠道报名200人左右。在本项目中用到了Bootstrap和JQuery，通过本项目也巩固了页面布局和使用Js操作页面动画的知识，了解了前端框架的使用，也了解了windows server下使用IIS部署网站的知识。</p>
+        <h4>第三届大学城·钓鱼城音乐节官网：<a href="http://2015yyj.ytwlxt.com/" target="_blank">http://2015yyj.ytwlxt.com</a><time>2015.10</time></h4>
+        <p>独立完成该项目。该网站是我校举办的音乐节的官方新闻网站。在本项目的首页中使用了开源的JQuery图片轮播插件，后台文章管理使用了dedecms内容管理系统。通过本项目巩固了Js的知识，了解了PHP,MySQL的基本知识。</p>
+        <h3>个人项目</h3>
+        <h4>Make choise!：<a href="http://choise.life1st.cn/" target="_blank">http://choise.life1st.cn</a><time>2017.04</time></h4>
+        <p>查看vue文档时看到yesno.wft提供的api，觉得有趣所以写了这个项目。基本功能是点击页面上的Get按钮在几秒后返回yes或no。使用了vue作为内容容器，$.ajax()获取数据，通过检测页面宽度确定背景图片的重复方式。为了更好的用户体验，一是在点击Get按钮后尚未获取到结果前屏蔽了按钮的点击事件，避免重复点击造成重复请求，同时使用setInterval每过400ms更新一次按钮的内容，避免用户认为页面假死；二是在获取到图片后预加载到页面的隐藏元素中，使用onload()检测到图片加载完成后再设置为背景图片，避免白屏问题同时也增加趣味性。</p>
+        <h3>实习项目</h3>
+        <h4>金融信息服务中心<time>2017.07</time></h4>
+        <p>负责了部分页面的工作。用户界面的数据展示通过读取json数据，使用template.js模板、echarts图表展示信息；管理界面的查询、修改权限页等的编写。在本项目的权限配置页中中遇到了Js的异步问题，json1请求的数据为所有权限，json2请求的数据为当前用户拥有的权限，在json1的回调函数未执行完时json2就开始执行了，所以页面上用户拥有的权限无法完全显示。查阅资料后我使用定时器暂时解决了这个问题，并且了解到可以使用promise更好的解决这个问题。</p>
+    </div>
+</div>
+</body>
+</html>

@@ -125,6 +125,8 @@ End.
 
 说起来这个主要目的是宣传，所以没什么难度也是正常的，`window.location.search` 这个学习了，前段时间做实习项目，看到封装了一个函数可以拿到url后面的信息，还感觉很神奇，结果原来是这样子。
 
+sf.gg链接：https://segmentfault.com/a/1190000010868152
+
 
   [1]: ../pics/IMWebConf2017/2017-8-26_20-31-7.jpg
   [2]: ../pics/IMWebConf2017/2017-8-26_20-33-56.jpg

@@ -2,7 +2,7 @@
 Something about me.
 
 ## 简历
-[resume_201711](/resume/resume_201711.html)
+[resume_201802](/resume/resume_201802.html)
 
 ## 文章列表
 

@@ -17,11 +17,11 @@
     .title p{line-height: 20px;font-size: 15px;}
     .exp p,
     .award p{font-size: 14px;margin:2px 0;}
+
     .award .type { width: 2.6em;}
     .project p {line-height: 20px;font-size: 15px;text-indent: 2em;}
     a {font-size: 16px;font-weight: normal;color:#000;white-space: nowrap;text-decoration: none;}
     a:hover {color:#BEBEBE;}
-    a.title-h4 { font-size: 18px;}
     ul {margin-left: 18px;}
     li {margin-bottom: 2px; font-size: 15px;}
     .information {display: flex;justify-content: space-between;}
@@ -31,7 +31,10 @@
     .demo {display: inline-block;background-color: #eee;padding: 1px 2px;text-indent: 0;font-size: 12px;line-height: 12px;border: 1px solid #b3b3b3;border-radius: 5px;position: relative;top: -4px;user-select: none;}
     a.demo:hover {color: #7a7a7a;}
     .type { margin-left: 4px;font-size: 12px;color: #333;display: inline-block;width: 4.6em;border: 1px solid #BEBEBE;border-radius: 2px;line-height: 14px; text-align: center;margin-right: 4px;vertical-align: middle;position: relative;bottom: 1px;user-select: none;}
-
+    /*clear fix*/
+    .exp p::after,
+    .award p::after,
+    .project h4::after { content: ' ';display: block;clear: both;}
     @media (max-width: 500px) {
       .information { display: block;}
       .contact-info { margin-top: 6px;}
@@ -63,9 +66,9 @@
 
   <div class="exp title">
     <h2>实践经历</h2>
-    <p><span class="type">学生组织</span>网络学堂工作室 干事<time>2014.09 - 2015.06</time></p>
-    <p><span class="type">学生组织</span>学生科技联合会信息宣传部 部长<time>2015.06 - 2016.06</time></p>
-    <p style="margin-top: 2px;"><span class="type">实习</span>重庆市博恩软件有限公司 前端开发实习生<time>2017.07 - 2017.12</time></p>
+    <p><span class="type">学生组织</span>网络学堂工作室 / 干事<time>2014.09 - 2015.06</time></p>
+    <p><span class="type">学生组织</span>学生科技联合会·信息宣传部 / 部长<time>2015.06 - 2016.06</time></p>
+    <p style="margin-top: 2px;"><span class="type">实习</span>重庆市博恩软件有限公司·UED / 前端开发实习生<time>2017.07 - 2017.12</time></p>
   </div>
 
   <div class="project title">
@@ -74,7 +77,7 @@
       <span class="type">校内项目</span>
       <time>2015.10</time>
     </h4>
-    <p>在两周的时间里独立完成开发并上线。该网站是我校每年音乐节发布信息的官方网站，为国内外的观众和表演乐队提供节目信息预告，发布新闻稿。日均 500 人访问。使用 JQuery 及 JQuery 插件实现了首页 3D 轮播图效果，使用 dedecms 实现内容管理。通过本项目巩固和实践了 Js 的知识，另外了解了 PHP，MySQL 的基本知识。</p>
+    <p>该网站是我校每年音乐节发布信息的官方网站，为国内外观众和表演乐队提供节目信息预告，发布新闻稿。两周时间独立完成开发并上线，日均 500 人访问。使用 JQuery 及 JQuery 插件实现了首页 3D 轮播图效果，使用 dedecms 实现内容管理并生成静态首页。通过本项目实践和巩固了 Js 的知识，了解了 PHP，MySQL，SEO 等相关知识。</p>
     <h4>金融信息服务中心
       <span class="type">实习项目</span>
       <time>2017.07 - 2017.12</time>
@@ -89,12 +92,12 @@
       <span class="type">个人项目</span>
       <time>2017.10 - 2017.11</time>
     </h4>
-    <p>完成 HTML/CSS 学院，Js 学院所有任务。完成表单验证，UI 组件，Node 相关任务。</p>
+    <p>完成 HTML/CSS 学院，Js 学院所有任务。完成表单验证，UI 组件，NodeJs 相关任务。</p>
   </div>
   <div class="award title">
     <h2>荣誉奖励</h2>
     <p><span class="type">校级</span>第四届双体杯软件开发大赛 三等奖<time>2015.10</time></p>
-    <p><span class="type">校级</span>科技改变未来 海报设计比赛 三等奖<time>2016.03</time></p>
+    <p><span class="type">校级</span>第三届科技改变未来电子海报设计大赛 三等奖<time>2016.03</time></p>
     <p><span class="type">校级</span>学生科技联合会网络学堂工作室 优秀干事<time>2016.06</time></p>
   </div>
   <div class="skill title">
@@ -103,11 +106,11 @@
       <li>熟悉 W3C 标准，HTML 语义化，CSS，CSS3 动画/过渡。熟练使用 Less。能够实现复杂布局和动画，手写结构规范的页面。</li>
       <li>熟练使用原生 JS，熟悉 ES6 语法，可以不依赖第三方库完成基本 DOM 交互的编写。</li>
       <li>重视用户体验和代码可维护性，有近 2 年的前端开发经验。</li>
-      <li>熟练使用 JQuery 和 artTemplate 对数据进行预处理、加载数据，熟悉前后端分离。熟练使用 Echarts。</li>
+      <li>熟练使用 JQuery 和 artTemplate 预处理、加载数据，熟悉前后端分离。熟练使用 Echarts。</li>
       <li>熟悉 Vue ，理解重要概念。有使用 Vue 开发的个人项目<a href="http://air.life1st.cn" class="demo" target="_blank">Demo</a>。了解 React。可以快速进入工作状态。</li>
       <li>熟悉 MarkDown 。有 Git 和 SVN 的使用经验。熟悉项目开发流程，有真实项目开发经验。</li>
       <li>了解 Http 协议，有一定的性能优化经验。</li>
-      <li>了解 NodeJs。有 phantomJs 使用经验，能够使用 Express 进行开发环境的搭建。</li>
+      <li>了解 NodeJs。有 phantomJs 使用经验，能够使用 Express 搭建开发环境。</li>
       <li>了解Web常见攻击手段以及防护措施，了解常见的浏览器兼容问题。</li>
       <li>热爱前端开发，Github 中有多个独立完成的前端项目。习惯总结项目中的经验教训。</li>
     </ul>

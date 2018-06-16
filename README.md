@@ -11,5 +11,3 @@ Something about me.
 [IMWebConf 2017 官网彩蛋解谜](article/IMWebConf2017_eggs.md) 2017.08.26
 
 [click-input的实现](article/blogarticle_click-input.md) 2017.09.09
-
-[第一次实习·总结](article/blogarticle_intern-review.md) 2017.12.30

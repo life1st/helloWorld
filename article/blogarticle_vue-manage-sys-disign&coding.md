@@ -22,7 +22,9 @@
 |   `-- index.html
 |-- src
 |   |-- App.vue
-|   |-- assets      // 图片等资源文件目录
+|   |-- assets 
+|   |   |-- override-element-ui.less      // 覆盖 Element 默认样式
+|   |   |-- image                         // 图片文件目录
 |   |-- components  // 所有非 `<router-view />` 中显示的页面的 Vue 组件
 |   |   |-- mainMenu.vue    // 左侧导航
 |   |   |-- pureTitle.vue   // 通用的 Title 组件，项目中有多个页面会用到
@@ -100,6 +102,11 @@ module.exports = {
 
 #### 覆盖默认样式
 
+正常情况下，可以通过直接修改对应 class 的内容修改。但含有 foo__bar 类似格式的样式不会应用 scoped（因为不是同一个 Vue 实例），因此修改不会生效。
+
+解决方法是在 `main.js` 中引入外部样式表，类似`override-element-ui.less`，然后再外部样式表中修改 foo__bar 类名的样式
+
+
 ## 如何保存用户信息和登陆状态
 
 ## 如何优雅的触发表单验证
@@ -120,7 +127,9 @@ module.exports = {
 
 ## 输入框内容过滤
 
-## ajax 的封装
+## 获取数据时的细节问题
+
+### ajax 的封装
 
 基于 axios
 
@@ -172,6 +181,13 @@ export function GET_WITH_TOKEN(URL, token, params) {
 封装了基本的 GET,POST等方法，没什么特别的作用
 
 GET_WITH_TOKEN 用于需要登录鉴权的接口
+
+### 显示 Loading 状态
+
+在等待api返回数据时可以用loading告诉用户页面正在加载。
+
+一般切换路由后，会在组件的 `created()` 方法中发送请求。这种情况下应该在 nextTick()（或者mounted()中） 中调用 loading ，避免页面切换时找不到 DOM，出现全屏 loading 或页面闪烁。
+
 
 ## 尚不明确（梗
 

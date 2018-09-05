@@ -133,11 +133,12 @@ module.exports = {
 
 基于 axios
 
-`index.js`:
+`./utils/request/index.js`:
 
 ```javascript
 import axios from 'axios'
 
+// BASE_HOST 通过 .env.[development|production] 配置。注意：每个变量都要用 VUE_APP作为前缀，否则不能识别
 const BASE_HOST = process.env.VUE_APP_API_BASE
 const TIME_OUT = 1000 * 10
 
@@ -184,16 +185,19 @@ GET_WITH_TOKEN 用于需要登录鉴权的接口
 
 ### 显示 Loading 状态
 
-在等待api返回数据时可以用loading告诉用户页面正在加载。
+在等待api返回数据时可以用loading告诉用户页面正在加载。Element 提供的 [Loading组件](https://element.eleme.io/#/zh-CN/component/loading)
 
 一般切换路由后，会在组件的 `created()` 方法中发送请求。这种情况下应该在 nextTick()（或者mounted()中） 中调用 loading ，避免页面切换时找不到 DOM，出现全屏 loading 或页面闪烁。
 
+## 
 
 ## 尚不明确（梗
 
 1. I18n 的方案不够完善，现在做到了语言文件的热切换，但是对业务来讲似乎没有什么必要。没有做语言字符串的按需加载（事实上是做了但没有实现），但这个似乎比热切更重要一点。
 
 2. 按照 Vue-router 实现了懒加载及文件命名，但浏览器似乎仍然会下载所有 JS 文件，在 JS Tab 中可以看到只下载了当前页用到的文件。
+
+
 
 ## 参考资料
 

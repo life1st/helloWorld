@@ -100,14 +100,93 @@ module.exports = {
 }
 ```
 
-#### 覆盖默认样式
+### 覆盖默认样式
 
 正常情况下，可以通过直接修改对应 class 的内容修改。但含有 foo__bar 类似格式的样式不会应用 scoped（因为不是同一个 Vue 实例），因此修改不会生效。
 
-解决方法是在 `main.js` 中引入外部样式表，类似`override-element-ui.less`，然后再外部样式表中修改 foo__bar 类名的样式
+可以通过在 *.vue 中不使用 `scope` 来解决这个问题，Element 在 Issue 中也[吐槽过](https://github.com/ElemeFE/element/issues/377#issuecomment-253447667)。虽然我不认为 scope 不是一个好的解决方案。
 
+因此，我选择了在 `main.js` 中引入外部样式表，例如`override-element-ui.less`，在外部样式表中修改 foo__bar 类名的样式。
+
+## 路由设计
+
+`route.js` 主要设计如下：
+
+```javascript
+export default new Router({
+  mode: 'history',
+  routes: [
+    {
+      path: '/login',
+      name: 'login',
+      component: Login
+    },
+    {
+      path: '/',
+      name: 'home',
+      component: Home,
+      children: [
+        {
+          path: '/index',
+          component: mainPage
+        },
+        {
+          path: '/manage',
+          component: manage,
+          children: [
+            {
+              path: 'user/:uumsid&:userid',
+              component: userDetail
+            },
+            {
+              path: 'enterprise/:id',
+              component: insDetail
+            },
+            {
+              path: '/',
+              component: manageList
+            },
+          ]
+        },
+        {
+          path: '/verify',
+          component: Verify,
+        },
+        {
+          path: '/verify/:id',
+          component: VerifyDetail
+        },
+        {
+          path: '*',
+          redirect: '/index'
+        },
+      ]
+    },
+  ]
+})
+```
+
+555...不太想贴代码，感觉太乱、太长。
+
+但不贴又说不清楚。
+
+简单来说，项目只分为两个页面。登陆页和功能页。
+
+根路由绑定到了登陆后的首页。
+
+首页包含头部标题、左侧菜单还有显示内容的`<router-view />`。
+
+因此，如果用户仅输入 `location.host` 访问网站，会被带到 `${host}/index` 页面。这个时候又会出现两个分支。
+
+如果本地
 
 ## 如何保存用户信息和登陆状态
+
+整个系统只需要分成需要登录和不需登陆两个部分。
+
+当前所开发的系统除登录页外，都需要登录后访问。
+
+这个部分和路由设计其实强相关。
 
 ## 如何优雅的触发表单验证
 
@@ -126,6 +205,8 @@ module.exports = {
 当表单项很多时，也可以在`<form >...`中调用`clearValidate(prop)`, prop 指表单项的 name 值。
 
 ## 输入框内容过滤
+
+
 
 ## 获取数据时的细节问题
 
@@ -179,9 +260,9 @@ export function GET_WITH_TOKEN(URL, token, params) {
 
 ```
 
-封装了基本的 GET,POST等方法，没什么特别的作用
+封装了基本的 GET,POST等方法，没想到什么特别的作用，也没有想到不好的地方，留着为了以防万一。（事实上，也用上了。比如超时处理。但是，超时处理在下一层也能做。但这样的话登陆就需要单独设置超时了。）
 
-GET_WITH_TOKEN 用于需要登录鉴权的接口
+GET_WITH_TOKEN（以及 POST_WITH_TOKEN 等） 用于需要登录鉴权的接口
 
 ### 显示 Loading 状态
 
@@ -189,7 +270,6 @@ GET_WITH_TOKEN 用于需要登录鉴权的接口
 
 一般切换路由后，会在组件的 `created()` 方法中发送请求。这种情况下应该在 nextTick()（或者mounted()中） 中调用 loading ，避免页面切换时找不到 DOM，出现全屏 loading 或页面闪烁。
 
-## 
 
 ## 尚不明确（梗
 
@@ -197,7 +277,7 @@ GET_WITH_TOKEN 用于需要登录鉴权的接口
 
 2. 按照 Vue-router 实现了懒加载及文件命名，但浏览器似乎仍然会下载所有 JS 文件，在 JS Tab 中可以看到只下载了当前页用到的文件。
 
-
+3. Vuex 是否有一定要用的必要？类似的管理系统涉及到不同页面之间的交互都很少。在该系统中完全没有，虽然有不同组件的交互，但都能较简单的把状态提升到其父组件。因此，Vuex 唯一必须要用的理由就是保存用户状态。因为登陆后的接口都需要 token 校验，保存在 Vuex 中可以非常方便的使用。
 
 ## 参考资料
 

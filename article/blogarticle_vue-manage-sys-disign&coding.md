@@ -24,7 +24,7 @@
 |   |-- App.vue
 |   |-- assets 
 |   |   |-- override-element-ui.less      // 覆盖 Element 默认样式
-|   |   |-- image                         // 图片文件目录
+|   |   `-- image                         // 图片文件目录
 |   |-- components  // 所有非 `<router-view />` 中显示的页面的 Vue 组件
 |   |   |-- mainMenu.vue    // 左侧导航
 |   |   |-- pureTitle.vue   // 通用的 Title 组件，项目中有多个页面会用到

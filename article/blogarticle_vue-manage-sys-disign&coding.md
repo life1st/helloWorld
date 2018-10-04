@@ -1,4 +1,4 @@
-# 基于 Vue 的管理系统前端实践
+# 基于 Vue 的后台管理系统前端实践
 
 [TOC]
 
@@ -170,15 +170,17 @@ export default new Router({
 
 但不贴又说不清楚。
 
-简单来说，项目只分为两个页面。登陆页和功能页。
+简单来说，项目只分为两个部分。登陆页和功能页。
 
 根路由绑定到了登陆后的首页。
 
-首页包含头部标题、左侧菜单还有显示内容的`<router-view />`。
+首页包含头部标题、左侧菜单还有显示内容的 `<router-view />`。
 
-因此，如果用户仅输入 `location.host` 访问网站，会被带到 `${host}/index` 页面。这个时候又会出现两个分支。
+因此，如果用户仅输入 `location.host` 访问网站，会被带到 `${host}/index` 页面。另外，访问任意未被匹配的 path，都会重定向到 `index` 页面。
 
-如果本地
+这个时候会出现两个分支：
+
+判断本地是否存在用户信息是否存在 ？ 进行正常操作 ：重定向到登录页
 
 ## 如何保存用户信息和登陆状态
 
@@ -186,7 +188,33 @@ export default new Router({
 
 当前所开发的系统除登录页外，都需要登录后访问。
 
-这个部分和路由设计其实强相关。
+这个部分和路由设计强相关。何时判断用户是否登录在上一部分已经解释过。
+
+使用 `localstorage` 来持久化保存用户信息，处理用户刷新页面以及一段时间内关闭浏览器后不用重新登录的需求。（一段时间为30min）
+
+在 `Home.vue` 的 created() 钩子中做如下操作：
+
+```javascript
+    created() {
+      let userInfo = getUserFromLocal('userinfo')
+      let verifiedUserInfo = (info) => {
+        let now = new Date().getTime()
+        const PASS_TIME = 1000 * 60 * 30 // 30min
+        if (!info) return false
+        if (now - info.time < PASS_TIME) return true
+        return false
+      }
+      if (!!verifiedUserInfo(userInfo)) {
+        this.onRefresh(userInfo)
+      } else {
+        this.$router.push({path: '/login'})
+      }
+    }
+```
+
+其中，`getUserFromLocal` 是在 `userHelper.js` 中写的从 localstorage 中获取数据的方法。通过判断用户信息是否存在以及是否过期来决定是跳转到登录页还是直接使用当前已有的用户信息。
+
+// 我不觉得这是一个很完美的方案，但根据我搜索的资料来看，确实没有详细说过这方面内容的文章。所以，期待能看到更好的方案。
 
 ## 如何优雅的触发表单验证
 
@@ -194,9 +222,9 @@ export default new Router({
 
 但没有给出 `async-validator` 支持的表单验证触发方式。
 
-经过[查找](https://regular-ui.github.io/ui-field/validation/)，支持的方法有： `submit, blur, input`
+经过[查找](https://regular-ui.github.io/ui-field/validation/)，支持的触发方式有： `submit, blur, input`
 
-我选择的方案是在规则中使用 `submit` 时验证（指表单提交时触发，因此不会触发，但能满足需求。）
+我选择的方案是在规则中使用 `submit` 时验证（指表单提交时触发，因此实际情况中永远不会触发，但能满足需求，即手动触发验证。）
 
 同时，在点击登录或者发送请求按钮时，调用 `this.$refs.[formEl].validate((boolean) => { // callback})`
 
@@ -206,7 +234,21 @@ export default new Router({
 
 ## 输入框内容过滤
 
+产品有一个需求是，在搜索用户信息时，只能通过邮箱搜索，并且只能输入字母、数字以及@。因此，我们需要对用户输入数据时即时进行过滤。（别问我为什么不在用户输入完成后提示错误，这是需求。
 
+我选择了 watch 输入框 value 的值：
+
+```javascript
+value(val) {
+  this.$nextTick(() => {
+    this.value = this.reg ? val.replace(this.reg, '') : val
+  })
+}
+```
+
+这里的坑就是需要在 $nextTick() 中更新 value 值，因为 DOM 元素这时才刷新。
+
+这个需求有许多 blog 都给出过不同的解决方案，可以多看看选择一下。
 
 ## 获取数据时的细节问题
 

@@ -8,6 +8,7 @@ time{float: right;margin-right: 0.2em;font-size: 15px;font-weight:normal;line-he
 .project h4{font-size: 18px;line-height: 24px;margin: 6px 0 2px;font-weight: normal;padding-left: 4px;}
 .project h4::before { content:' ';border-left: 2px solid #000;display: inline-block;height: .9em;width: 6px;position: relative;top: 3px;}
 .project-content {padding-left: 4px;}
+.unset-list {list-style-type: circle;padding-left: 1em;}
 .title p{line-height: 20px;font-size: 15px;}
 .exp p,
 .award p{font-size: 14px;margin:2px 0;}

@@ -4,6 +4,8 @@ Something about me.
 ## 简历
 [resume_201802](/resume/resume_201802.html)
 
+[resume_v10](/resume/resume_201810.html)
+
 ## 文章列表
 
 [tab-UI的实现](article/blogarticle_tab-ui.md) 2017.08.24

@@ -4,16 +4,17 @@
 time{float: right;margin-right: 0.2em;font-size: 15px;font-weight:normal;line-height: inherit;}
 .title h2{margin:10px 0 5px;border-bottom: 1px solid black;padding-bottom: 2px;font-weight: 500;font-size: 22px;}
 .information h2{border: none;font-size: 28px;}
-.title h3{font-size: 20px;display: inline-block;border-bottom: 1px solid #000;padding:0 4px 2px 0; margin: 4px auto -4px;}
 .project h4{font-size: 18px;line-height: 24px;margin: 6px 0 2px;font-weight: normal;padding-left: 4px;}
 .project h4::before { content:' ';border-left: 2px solid #000;display: inline-block;height: .9em;width: 6px;position: relative;top: 3px;}
-.project-content {padding-left: 4px;}
 .unset-list {list-style-type: circle;padding-left: 1em;}
 .title p{line-height: 20px;font-size: 15px;}
-.exp p,
-.award p{font-size: 14px;margin:2px 0;}
-.award .type { width: 2.6em;}
-.project p {line-height: 20px;font-size: 15px;text-indent: 2em;}
+.exp h3 {font-size: 16px;font-weight: 500;margin-top: 8px;margin-bottom: 4px;}
+.exp h3:nth-child(2) {margin-top: 0;}
+.exp h4 {font-size: 14px;}
+.exp h4 .time {font-weight: 500;}
+.exp p, .project p{font-size: 14px;margin:2px 0;}
+.type { width: 2.6em;}
+.project p {text-indent: 2em;}
 a {font-size: 16px;font-weight: normal;color:#000;white-space: nowrap;text-decoration: none;}
 a:hover {color:#BEBEBE;}
 ul {margin-left: 18px;}

@@ -1,10 +1,7 @@
 # helloWorld
 Something about me.
 
-## 简历
-[resume_201802](/resume/resume_201802.html)
-
-[resume_v10](/resume/resume_201810.html)
+[resume](/resume/resume_201810.html)
 
 ## 文章列表
 

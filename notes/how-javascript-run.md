@@ -143,4 +143,55 @@ Promise 的作用不仅仅是让代码更好看，重要的是解决了 回调�
 
 如果他们把回调调用了5次怎么办 
 
-赞美这一章！
+赞美这一章！（划掉
+
+... 一夜没睡（误，回调被调5次是伪需求啊。一次 HTTP 请求 成功 | 失败，也只会产生一次回调，像作者举例，使用第三方支付，如果只是根据请求返回的数据回调，根本不可能被调用5次啊。唯一的可能是使用别人的SDK，但 Promise 也无法避免使用第三方 SDK 产生的问题啊。乍一看很有道理，仔细想想胡说八道。
+
+### 生成器
+
+生成器 -> 迭代器
+
+e.g.(不是书中的例子)
+
+1. 产生一个自增的值
+
+```
+function IncreaseNum() {
+  let num = 0
+
+  return function() {
+    return num++
+  }
+}
+
+let n = new IncreaseNum()
+n() // 0
+n() // 1
+n() // 2
+```
+
+and now:
+```
+function *IncreaseNum() {
+  let num = 0
+
+  while(true) {
+    yield num++
+  }
+}
+
+let n = IncreaseNum()
+
+n.next().value // 0
+n.next().value // 1
+n.next().value // 2
+```
+
+### 性能
+
+1. `new Date().getTime()` -> end - start -> 不准确，和JS引擎定时器精度有关
+
+2. benchmark.js
+
+对于特定实现的性能测试是没必要的（比如标准库），影响太小、引擎底层实现策略。 -> “微性能”
+

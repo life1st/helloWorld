@@ -4,7 +4,7 @@
   "description": "blog ",
   "main": "src/app.js",
   "scripts": {
-    "start": "node src/app.js"
+    "start": "now dev"
   },
   "repository": {
     "type": "git",
@@ -21,8 +21,10 @@
   "homepage": "https://github.com/life1st/helloWorld#readme",
   "dependencies": {
     "@koa/router": "^8.0.5",
+    "aes-js": "^3.1.2",
     "koa": "^2.11.0",
     "koa-bodyparser": "^4.2.1",
-    "mongoose": "^5.8.9"
+    "mongoose": "^5.8.9",
+    "uuid": "^3.4.0"
   }
 }

@@ -4,11 +4,18 @@ const bodyParser = require('koa-bodyparser')
 const { apiInstance } = require('./router/api')
 const { connect } = require('./db')
 
+const needConnectDB = ctx => {
+  const paths = ['/api']
+  
+  return paths.some(path => ctx.req.url.includes(path)) 
+}
+
 app
 .use(async (ctx, next) => {
   console.log(ctx.req.url)
-
-  await connect()
+  if (needConnectDB(ctx)) {
+    await connect()
+  }
   await next()
 
   console.log(ctx.body, ctx.status)
@@ -22,7 +29,9 @@ app
     } else {
       ctx.body = { status: false, message: 'unknown error.' }
     }
-  } else if (ctx.body && !ctx.status) {
+    return
+  }
+  if (ctx.body && !ctx.status) {
     ctx.status = 200
   }
   

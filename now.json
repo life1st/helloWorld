@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "alias": "intro.life1st.me",
+  "env": {
+    "MONGO_PWD": "@mongo_pwd"
+  },
+  "builds": [{
+    "src": "src/app.js", "use": "@now/node"
+  }],
+  "routes": [
+    {
+    "src": "/(.*)", "dest": "src/app.js"
+    }
+  ]
+}

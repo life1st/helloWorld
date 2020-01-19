@@ -1,0 +1,28 @@
+{
+  "name": "helloworld",
+  "version": "1.0.0",
+  "description": "blog ",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "node src/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/life1st/helloWorld.git"
+  },
+  "keywords": [
+    "blog"
+  ],
+  "author": "life1st",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/life1st/helloWorld/issues"
+  },
+  "homepage": "https://github.com/life1st/helloWorld#readme",
+  "dependencies": {
+    "@koa/router": "^8.0.5",
+    "koa": "^2.11.0",
+    "koa-bodyparser": "^4.2.1",
+    "mongoose": "^5.8.9"
+  }
+}

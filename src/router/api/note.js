@@ -4,7 +4,26 @@ const noteInstance = new Router()
 
 noteInstance.prefix('/note')
 .get('s', async ctx => {
-  ctx.body = await Note.find({}, {_id: 0, __v: 0})
+  let { start, page_count } = ctx.query
+  start = Number(start)
+  page_count = Number(page_count)
+  if (
+    (start && Number.isNaN(start)) 
+    || (page_count && Number.isNaN(page_count))
+  ) {
+    ctx.status = 403
+    ctx.body = { status: false, message: 'unsupport query.' }
+    return
+  }
+
+  if (!page_count) {
+    page_count = 10
+  }
+  if (!start) {
+    start = 0
+  }
+  
+  ctx.body = await Note.find({}, {_id: 0, __v: 0}).skip(start).limit(page_count)
 })
 .post('/:id', async ctx => {
   const { id } = ctx.params

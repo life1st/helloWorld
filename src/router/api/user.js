@@ -6,13 +6,12 @@ const userInstance = new Router()
 userInstance.prefix('/user')
 .get('/', async ctx => {
   const { key } = ctx.session
-  console.log(ctx.session, ctx.cookies)
   if (!key) {
     ctx.session.key = null
     ctx.status = 403
     ctx.body = { status: false, message: 'not login yet.'}
   } else {
-    const user = await User.findOne({sessionKey: key}, {_id: 0, __v: 0, sessionKey: 0})
+    const user = await User.findOne({sessionKey: key}, {_id: 0, __v: 0, sessionKey: 0, password: 0})
 
     if (user) {
       ctx.body = user
@@ -28,13 +27,18 @@ userInstance.prefix('/user')
     password
   } = ctx.request.body
 
-  const user = await User.findOne({name}, {__v: 0, sessionKey: 0})
+  const user = await User.findOne({name}, {__v: 0})
 
   if (user) {
     if (user.password === password) {
       ctx.session.key = String(Math.random()).split('.').pop() + Date.now()
       await user.login(ctx.session.key)
-      ctx.body = user
+      ctx.body = Object.keys(user._doc)
+      .filter(k => !['password', 'sessionKey', '_id'].includes(k))
+      .reduce((acc, k) => {
+        acc[k] = user[k]
+        return acc
+      }, {})
     } else {
       ctx.status = 403
       ctx.body = { status: false, message: 'password not valided.'}
@@ -49,6 +53,7 @@ userInstance.prefix('/user')
   const user = await User.findOne({sessionKey: key})
 
   if (user) {
+    ctx.session.key = null
     await user.logout()
     ctx.body = { status: true, message: 'logout success.' }
   } else {

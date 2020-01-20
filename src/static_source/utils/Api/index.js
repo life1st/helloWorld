@@ -16,7 +16,12 @@ const logout = (data) => {
 
   return axios.post(url, data)
 }
+const user = () => {
+  const url = '/api/user'
+
+  return axios.get(url)
+}
 
 export const API = {
-  note, login, logout
+  note, login, logout, user
 }

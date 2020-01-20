@@ -3,6 +3,7 @@ const webpack = require('webpack')
 const isDev = process.env.NODE_ENV === 'dev'
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const HtmlPlugin = require('html-webpack-plugin')
+const autoprefixer = require('autoprefixer')
 const { CleanWebpackPlugin: CleanPlugin } = require('clean-webpack-plugin')
 const { root } = require('../../config')
 

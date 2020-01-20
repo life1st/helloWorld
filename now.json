@@ -2,7 +2,8 @@
   "version": 2,
   "alias": "intro.life1st.me",
   "env": {
-    "MONGO_PWD": "@mongo_pwd"
+    "MONGO_PWD": "@mongo_pwd",
+    "SESSION_KEY": "@session_key_blog"
   },
   "builds": [{
     "src": "src/app.js", "use": "@now/node"

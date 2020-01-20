@@ -10,11 +10,10 @@ const { staticPath } = require('../config')
 const checkIfIgnore = (url) => {
   const urls = ['/favicon.ico']
 
-  return urls.some(val => url.includes(val) || val.includes(url))
+  return urls.some(val => url.includes(val))
 }
 
-app.keys = ['sec']
-// app.keys = [process.env.SESSION_KEY]
+app.keys = [process.env.SESSION_KEY]
 
 app
 .use(session({

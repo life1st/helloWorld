@@ -22,20 +22,16 @@ app
   // maxAge: 1000 * 60 * 60 * 24 // 1day
 }, app))
 .use(async (ctx, next) => {
-  console.log(ctx.req.url)
   if (checkIfIgnore(ctx.req.url)) {
     ctx.status = 418
     return
   }
-  if (dbHelper.needConnectDB(ctx)) {
+  if (dbHelper.needConnectDB(ctx) && !dbHelper.status.isConnected) {
     await connect()
   }
   await next()
 
-  let n = ctx.session.views || 0
-  ctx.session.views = ++n
-  
-  console.log(ctx.status, ctx.session.views)
+  console.log(ctx.status, ctx.req.url)
   if (!ctx.body) {
     const statusMap2Msg = {
       404: 'not found.', 

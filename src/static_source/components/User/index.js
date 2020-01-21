@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import css from './index.scss'
 import { API } from '../../utils/Api'
+import Login from './login'
+import Register from './register'
+
 
 const User = (props) => {
   const [reqStatus, setReqStatus] = useState('done')
   const [userInfo, setUserInfo] = useState(null)
-  const [formData, setFromData] = useState({
-    name: '',
-    password: ''
-  })
+  const [hiddenFrom, setShowForm] = useState('login')
+
   useEffect(() => {
     if (reqStatus === 'done') {
       setReqStatus('loading')
@@ -23,16 +24,6 @@ const User = (props) => {
     }
   }, [userInfo])
 
-  const handleLogin = () => {
-    setReqStatus('loading')
-    API.login(formData).then(res => {
-      setReqStatus('done')
-      if (res.status === 200) {
-        setUserInfo(res.data)
-      }
-    })
-  }
-
   const handleLogout = () => {
     setReqStatus('loading')
     API.logout().then(res => {
@@ -43,13 +34,11 @@ const User = (props) => {
     })
   }
 
-  const handleInput = (type) => {
-    return (e) => {
-      const text = e.target.value
-      setFromData({
-        ...formData,
-        [type]: text
-      })
+  const handleChangeForm = () => {
+    if (hiddenFrom === 'login') {
+      setShowForm('register')
+    } else {
+      setShowForm('login')
     }
   }
 
@@ -68,9 +57,12 @@ const User = (props) => {
         </div>
       ) : (
         <div>
-          <input type="text" onInput={handleInput('name')}/>
-          <input type="password" onInput={handleInput('password')}/>
-          <button onClick={handleLogin}>Login</button>
+          {
+            hiddenFrom === 'login' 
+            ? <Register onRegisterSuccess={() => {handleChangeForm('login')}}/>
+            : <Login onLoginSuccess={setUserInfo} />
+          }
+          <button onClick={handleChangeForm}>to {hiddenFrom}</button>
         </div>
       )}
     </div>

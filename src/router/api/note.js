@@ -1,5 +1,6 @@
 const Router = require('@koa/router')
 const { Note } = require('../../models/note')
+const { requiredLogin, getUser } = require('../utils')
 const noteInstance = new Router()
 
 noteInstance.prefix('/note')
@@ -26,6 +27,7 @@ noteInstance.prefix('/note')
   ctx.body = await Note.find({}, {_id: 0, __v: 0}).skip(start).limit(page_count)
 })
 .post('/:id', async ctx => {
+  if (requiredLogin(ctx)) return
   const { id } = ctx.params
   if (!id || Number.isNaN(Number(id))) {
     ctx.status = 403
@@ -43,12 +45,18 @@ noteInstance.prefix('/note')
       title,
       content
     } = ctx.request.body
-    const note = await new Note({id, title, content}).save()
-
-    ctx.body = { status: true, message: 'saved.' }
+    const user = await getUser(ctx)
+    if (user) {
+      const note = await new Note({id, title, content, author_uid: user.uid}).save()
+      ctx.body = { status: true, message: 'saved.' }
+    } else {
+      ctx.status = 403
+      ctx.body = { status: false, message: 'invalid user info.' }
+    }
   }
 })
 .put('/:id', async ctx => {
+  if (requiredLogin(ctx)) return
   const { id } = ctx.params
   if (!id || Number.isNaN(Number(id))) {
     ctx.status = 403
@@ -77,6 +85,7 @@ noteInstance.prefix('/note')
   }
 })
 .delete('/:id', async ctx => {
+  if (requiredLogin(ctx)) return
   const { id } = ctx.params
   if (!id || Number.isNaN(Number(id))) {
     ctx.status = 403

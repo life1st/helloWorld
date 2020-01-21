@@ -21,7 +21,12 @@ const user = () => {
 
   return axios.get(url)
 }
+const register = (name, password, id) => {
+  const url = '/api/user/register'
+
+  return axios.post(url, {name, password, id})
+}
 
 export const API = {
-  note, login, logout, user
+  note, login, logout, user, register
 }

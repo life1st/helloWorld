@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import User from './components/User'
+import NoteList from './components/NoteList'
 import { API } from './utils/Api'
 
 class App extends Component {
@@ -36,6 +37,7 @@ class App extends Component {
           {isSending ? 'stop' : 'test req'}
         </button>
         <User />
+        <NoteList />
       </div>
     )
   }

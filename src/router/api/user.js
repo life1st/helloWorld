@@ -23,11 +23,11 @@ userInstance.prefix('/user')
 })
 .post('/login', async ctx => {
   const {
-    name,
+    id,
     password
   } = ctx.request.body
 
-  const user = await User.findOne({name}, {__v: 0})
+  const user = await User.findOne({id}, {__v: 0})
 
   if (user) {
     if (user.password === password) {
@@ -71,12 +71,11 @@ userInstance.prefix('/user')
   try {
     const user = await User.findOne({id})
     if (user) {
-      console.log(user)
       ctx.status = 403
       ctx.body = { status: false, message: 'user id already exist.'}
     } else {
       await new User({
-        name, password, id
+        name, password, id, group: 1
       }).save()
   
       ctx.status = 200

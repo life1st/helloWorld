@@ -5,7 +5,7 @@ const noteSchema = new mongoose.Schema({
   id: {type: Number, required: true},
   title: {type: String, required: true},
   create_at: {type: Date, default: Date.now},
-  author: {type: String},
+  author_uid: {type: String, required: true},
   content: {type: String, default: ''}
 })
 

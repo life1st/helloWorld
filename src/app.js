@@ -7,7 +7,7 @@ const static = require('koa-static')
 const session = require('koa-session')
 const { staticPath } = require('../config')
 
-const checkIfIgnore = (url) => {
+const checkIfIgnore = url => {
   const urls = ['/favicon.ico']
 
   return urls.some(val => url.includes(val))
@@ -31,7 +31,7 @@ app
   }
   await next()
 
-  console.log(ctx.status, ctx.req.url)
+  console.log(ctx.status, ctx.req.method, ctx.req.url)
   if (!ctx.body) {
     const statusMap2Msg = {
       404: 'not found.', 

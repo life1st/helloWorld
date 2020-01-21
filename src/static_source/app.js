@@ -1,14 +1,44 @@
-import React from 'react'
+import React, { Component } from 'react'
 import User from './components/User'
+import { API } from './utils/Api'
 
-const App = (props) => {
+class App extends Component {
+  state = {
+    isSending: false
+  }
+  sendReq = () => {
+    API.note().then(() => {
+      if (this.state.isSending) {
+        this.sendReq()
+      }
+    })
+  }
 
-  return (
-    <div>
-      App
-      <User />
-    </div>
-  )
+  startReq = () => {
+    this.setState({
+      isSending: true
+    })
+    this.sendReq()
+  }
+  stopReq = () => {
+    this.setState({
+      isSending: false
+    })
+  }
+
+  render() {
+    const { isSending } = this.state
+
+    return (
+      <div>
+        App
+        <button onClick={isSending ? this.stopReq : this.startReq}>
+          {isSending ? 'stop' : 'test req'}
+        </button>
+        <User />
+      </div>
+    )
+  }
 }
 
 export default App

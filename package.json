@@ -5,8 +5,8 @@
   "main": "src/app.js",
   "scripts": {
     "start": "now dev",
-    "dev:static": "NODE_ENV=dev webpack-dev-server --config ./src/static_source/webpack.config.js",
-    "build:static": "NODE_ENV=prod webpack --config ./src/static_source/webpack.config.js"
+    "dev:static": "cross-env NODE_ENV=dev webpack-dev-server --config ./src/static_source/webpack.config.js",
+    "build:static": "cross-env NODE_ENV=prod webpack --config ./src/static_source/webpack.config.js"
   },
   "repository": {
     "type": "git",
@@ -42,6 +42,7 @@
     "autoprefixer": "^9.7.4",
     "babel-loader": "^8.0.6",
     "clean-webpack-plugin": "^3.0.0",
+    "cross-env": "^6.0.3",
     "css-loader": "^3.4.2",
     "html-webpack-plugin": "^3.2.0",
     "mini-css-extract-plugin": "^0.9.0",

@@ -30,18 +30,19 @@ userInstance.prefix('/user')
   const user = await User.findOne({id}, {__v: 0})
 
   if (user) {
-    if (user.password === password) {
-      ctx.session.key = String(Math.random()).split('.').pop() + Date.now()
-      await user.login(ctx.session.key)
+    ctx.session.key = String(Math.random()).split('.').pop() + Date.now()
+    const isPwdCorrect = await user.login(ctx.session.key, password)
+
+    if (isPwdCorrect) {
       ctx.body = Object.keys(user._doc)
-      .filter(k => !['password', 'sessionKey', '_id'].includes(k))
-      .reduce((acc, k) => {
-        acc[k] = user[k]
-        return acc
-      }, {})
+        .filter(k => !['password', 'sessionKey', '_id'].includes(k))
+        .reduce((acc, k) => {
+          acc[k] = user[k]
+          return acc
+        }, {})
     } else {
       ctx.status = 403
-      ctx.body = { status: false, message: 'password not valided.'}
+      ctx.body = { status: false, message: 'password invalid.'}
     }
   } else {
     ctx.status = 403
@@ -76,7 +77,7 @@ userInstance.prefix('/user')
     } else {
       await new User({
         name, password, id, group: 1
-      }).save()
+      }).register()
   
       ctx.status = 200
       ctx.body = { status: true, message: 'register success.'}

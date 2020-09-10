@@ -4,7 +4,7 @@ import { isDev } from '../consts'
 const note = (id) => {
   const url = '/api' + (id ? `/note/${id}` : '/notes')
 
-  return axios.get(url)
+  return axios.get(url).then(res => res.data)
 }
 const login = (data) => {
   const url = '/api/user/login'

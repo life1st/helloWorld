@@ -7,25 +7,25 @@ class App extends Component {
   state = {
     isSending: false
   }
-  sendReq = () => {
-    API.note().then(() => {
-      if (this.state.isSending) {
-        this.sendReq()
-      }
-    })
-  }
+  // sendReq = () => {
+  //   API.note().then(() => {
+  //     if (this.state.isSending) {
+  //       this.sendReq()
+  //     }
+  //   })
+  // }
 
-  startReq = () => {
-    this.setState({
-      isSending: true
-    })
-    this.sendReq()
-  }
-  stopReq = () => {
-    this.setState({
-      isSending: false
-    })
-  }
+  // startReq = () => {
+  //   this.setState({
+  //     isSending: true
+  //   })
+  //   this.sendReq()
+  // }
+  // stopReq = () => {
+  //   this.setState({
+  //     isSending: false
+  //   })
+  // }
 
   render() {
     const { isSending } = this.state

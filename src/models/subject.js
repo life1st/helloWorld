@@ -12,9 +12,12 @@ const subjectSchema = new mongoose.Schema({
   subtype: {
     type: String,
     enum: ['movie', 'tv', 'book', 'music']
-  }                                                                                                                                                                                                                                                                                                                                                                                                
+  },
+  pic: {
+    type: Object,
+  },
 })
 
 const Subject = db.model('subject', subjectSchema)
 
-module.exports = { subject }
+module.exports = { Subject }

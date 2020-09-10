@@ -106,5 +106,5 @@ module.exports = {
       '/api': 'http://localhost:3000'
     }
   },
-  devtool: isDev ? 'cheap-eval-source-map' : 'source-map'
+  devtool: 'source-map'
 }

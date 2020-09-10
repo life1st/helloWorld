@@ -1,6 +1,8 @@
 const { db } = require('../db')
 const mongoose = require('mongoose')
 const uuidV1 = require('uuid/v1')
+const bcrypt = require('bcrypt')
+const saltRount = 10
 
 const userSchema = new mongoose.Schema({
   uid: { type: String, default: uuidV1 },
@@ -13,16 +15,28 @@ const userSchema = new mongoose.Schema({
 
 const User = db.model('user', userSchema)
 
-User.prototype.login = async function(sessionKey) {
-  this.sessionKey = sessionKey
-  await this.save()
-  return true
+User.prototype.login = async function(sessionKey, password) {
+  const { password: hashedPwd } = this
+  const isPwdCorrect = await bcrypt.compare(password, hashedPwd)
+  if (isPwdCorrect) {
+    this.sessionKey = sessionKey
+    return await this.save()
+  } else {
+    return false
+  }
 }
 
 User.prototype.logout = async function() {
   this.sessionKey = null
-  await this.save()
-  return true
+  return await this.save()
+}
+
+User.prototype.register = async function() {
+  const { password } = this
+  const hashedPwd = await bcrypt.hash(password, saltRount)
+  this.password = hashedPwd
+
+  return await this.save()
 }
 
 module.exports = { User }

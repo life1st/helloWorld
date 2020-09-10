@@ -2,8 +2,9 @@ const mongoose = require('mongoose')
 const host = (password) => (`mongodb+srv://jiaoyang:${password}@cluster0-kyrqp.mongodb.net/blog?retryWrites=true`)
 
 const connect = async () => {
-  await mongoose.connect(host('g4sSJWx5'))
-  // await mongoose.connect(host(process.env.MONGO_PWD))
+  if (!dbHelper.status.isConnected) {
+    await mongoose.connect(host(process.env.MONGO_PWD))
+  }
 }
 const db = mongoose.connection
 

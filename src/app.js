@@ -18,8 +18,7 @@ app.keys = [process.env.SESSION_KEY]
 app
 .use(session({
   key: 'koa:Yan',
-  maxAge: 100000 //ms
-  // maxAge: 1000 * 60 * 60 * 24 // 1day
+  maxAge: 1000 * 60 * 60 * 24 // 1day
 }, app))
 .use(async (ctx, next) => {
   if (checkIfIgnore(ctx.req.url)) {

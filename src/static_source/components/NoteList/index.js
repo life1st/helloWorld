@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { API } from '../../utils/Api'
 import { useQuery } from 'react-query'
+import { useHistory } from 'react-router-dom'
 
 const NoteList = (props) => {
   // const [notes, setNotes] = useState(null)
@@ -8,21 +9,30 @@ const NoteList = (props) => {
   // useEffect(() => {
   //   if (!notes) {
   //     API.note().then(res => {
-  //       if (res.status === 200) {
-  //         setNotes(res.data)
-  //       }
+  //       setNotes(res.data)
   //     })
   //   }
   // }, [notes])
 
-  const { isLoading, data: notes } = useQuery('todos', () => API.note())
-
+  const { isLoading, data: notes } = useQuery(['notes', notes], () => API.note())
+  const history = useHistory()
+  const handleNoteClick = (id) => {
+    history.push(`/note/${id}`)
+  }
+  
   return (
     <div>
       {
         isLoading 
         ? 'loading notes' 
-        : notes.map(note => (<p key={note.id}>{note.title}</p>))
+        : notes.map(note => (
+          <p 
+            key={note.id}
+            onClick={() => {handleNoteClick(note.id)}}
+          >
+            {note.title}
+          </p>
+        ))
       }
     </div>
   )

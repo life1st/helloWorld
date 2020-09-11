@@ -3,12 +3,15 @@ import css from './index.scss'
 import { API } from '../../utils/Api'
 import Login from './login'
 import Register from './register'
+import { useHistory, useLocation } from 'react-router-dom'
 
 
 const User = (props) => {
   const [reqStatus, setReqStatus] = useState('done')
   const [userInfo, setUserInfo] = useState(null)
   const [hiddenFrom, setShowForm] = useState('login')
+  const history = useHistory()
+  const location = useLocation()
 
   useEffect(() => {
     if (reqStatus === 'done') {
@@ -35,10 +38,12 @@ const User = (props) => {
   }
 
   const handleChangeForm = () => {
+    console.log(hiddenFrom, location)
     if (hiddenFrom === 'login') {
-      setShowForm('register')
+      history.push('/login')
     } else {
-      setShowForm('login')
+      // setShowForm('login')
+      setShowForm('register')
     }
   }
 
@@ -52,13 +57,15 @@ const User = (props) => {
     <div>
       {userInfo ? (
         <div>
-          <p>{userInfo.name}</p>
-          <button onClick={handleLogout}>Logout</button>
+          <p>
+            {userInfo.name}
+            <button onClick={handleLogout}>Logout</button>
+          </p>
         </div>
       ) : (
         <div>
           {
-            hiddenFrom === 'login' 
+            hiddenFrom === 'login'
             ? <Register onRegisterSuccess={() => {handleChangeForm('login')}}/>
             : <Login onLoginSuccess={setUserInfo} />
           }

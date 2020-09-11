@@ -1,7 +1,19 @@
 import React, { Component } from 'react'
-import User from './components/User'
 import NoteList from './components/NoteList'
-import { API } from './utils/Api'
+import Navi from './components/Navi'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+}  from 'react-router-dom'
+import loadable from '@loadable/component'
+const Login = loadable(() => import(
+  /* webpackChunkName: 'Login' */
+  './Pages/Login'
+))
+const Note = loadable(() => import(
+  './Pages/Note'
+))
 
 class App extends Component {
   state = {
@@ -28,17 +40,20 @@ class App extends Component {
   // }
 
   render() {
-    const { isSending } = this.state
 
     return (
-      <div>
-        App
-        <button onClick={isSending ? this.stopReq : this.startReq}>
-          {isSending ? 'stop' : 'test req'}
-        </button>
-        <User />
-        <NoteList />
-      </div>
+      // <div>
+      //   <Navi />
+      //   <NoteList />
+      // </div>
+      <Router>
+        <Navi />
+        <Switch>
+          <Route path='/login' component={Login} />
+          <Route path='/note/:id' component={Note} />
+          <Route path='/' component={NoteList} />
+        </Switch>
+      </Router>
     )
   }
 }

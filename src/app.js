@@ -27,7 +27,7 @@ app
     ctx.status = 418
     return
   }
-  if (dbHelper.needConnectDB(ctx) && !dbHelper.status.isConnected) {
+  if (dbHelper.needConnectDB(ctx)) {
     await connect()
   }
   await next()
@@ -38,19 +38,16 @@ app
       404: 'not found.', 
       503: 'server error.'
     }
+    ctx.status = ctx.status
     if (ctx.status === 404 && !ctx.req.url.includes('/api')) {
       const html = await fsp.readFile(path.join(staticPath, '/index.html'), {encoding: 'utf8'})
       ctx.body = html
+      ctx.status = 200
     } else if (ctx.status && statusMap2Msg[ctx.status]) {
       ctx.body = statusMap2Msg[ctx.status]
     } else {
       ctx.body = { status: false, message: 'unknown error.' }
     }
-    return
-  }
-  
-  if (ctx.body && !ctx.status) {
-    ctx.status = 200
   }
 })
 .use(static(staticPath))

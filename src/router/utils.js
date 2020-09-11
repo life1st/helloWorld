@@ -5,11 +5,11 @@ const requiredLogin = async (ctx, next) => {
   ]
 
   if (ctx.req.method.toLowerCase() === 'get') {
-    next()
+    await next()
   }
 
   if (excludePath.some(path => ctx.req.url.includes(path))) {
-    next()
+    await next()
   }
 
   if (!ctx.session.key) {

@@ -4,6 +4,7 @@ import { API } from '../../utils/Api'
 import { useParams, useHistory } from 'react-router-dom'
 import Editor from '../../components/Editor'
 import { EditorState, convertFromRaw } from 'draft-js'
+import css from './index.scss'
 
 const NotePage = () => {
   const { id } = useParams()
@@ -17,13 +18,27 @@ const NotePage = () => {
   }
   const { user } = data
   const editorState = EditorState.createWithContent(convertFromRaw(JSON.parse(data.content)))
+
+  const handleEdit = () => {
+    history.push(`/note/${id}/edit`)
+  }
+  const handleDelete = () => {
+    if (confirm(`ensure delete this note: ${data.title} ?`)) {
+      API.deleteNote(id).then(data => {
+        history.push('/')
+      })
+    }
+  }
+
   return (
-    <div>
-      <h1>{data.title}</h1>
-      <p>
+    <div className={css.container}>
+      <h1 className={css.noteTitle}>{data.title}</h1>
+      <p className={css.meta}>
         <span>{user.name}</span>
+        <button onClick={handleEdit}>Edit</button>
+        <button onClick={handleDelete}>Delete</button>
       </p>
-      <Editor 
+      <Editor
         editorConfig={{
           readOnly: true,
           editorState

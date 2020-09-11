@@ -5,6 +5,9 @@
   border: 1px solid #ccc;
   border-radius: 4px;
   margin-bottom: 8px;
+  &.readOnly {
+    border: none;
+  }
 }
 .container {
   margin: 12px auto;

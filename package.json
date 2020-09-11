@@ -4,7 +4,7 @@
   "description": "blog ",
   "main": "src/app.js",
   "scripts": {
-    "start": "now dev",
+    "start": "vercel dev",
     "dev:static": "cross-env NODE_ENV=dev webpack-dev-server --config ./src/static_source/webpack.config.js",
     "build:static": "cross-env NODE_ENV=prod webpack --config ./src/static_source/webpack.config.js"
   },
@@ -27,6 +27,7 @@
     "aes-js": "^3.1.2",
     "axios": "^0.19.1",
     "bcrypt": "^5.0.0",
+    "classnames": "^2.2.6",
     "draft-js": "^0.11.7",
     "koa": "^2.11.0",
     "koa-bodyparser": "^4.2.1",

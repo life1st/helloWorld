@@ -50,6 +50,7 @@ class App extends Component {
         <Switch>
           <Route path='/login' component={Login} />
           <Route path='/note/create' component={Editor} />
+          <Route path='/note/:id/edit' component={Editor} />
           <Route path='/note/:id' component={Note} />
           <Route path='/' component={NoteList} />
         </Switch>

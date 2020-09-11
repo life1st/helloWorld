@@ -65,7 +65,7 @@ async ctx => {
 requiredLogin,
 async ctx => {
   const { id } = ctx.params
-  if (!id || Number.isNaN(Number(id))) {
+  if (!id) {
     ctx.status = 403
     ctx.body = { status: false, message: 'invalid note id.' }
     return
@@ -95,7 +95,7 @@ async ctx => {
 requiredLogin,
 async ctx => {
   const { id } = ctx.params
-  if (!id || Number.isNaN(Number(id))) {
+  if (!id) {
     ctx.status = 403
     ctx.body = { status: false, message: 'invalid note id.' }
     return

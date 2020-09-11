@@ -51,11 +51,7 @@ async ctx => {
     return
   }
 
-  console.log('before note')
-  console.log(ctx.user, 'user...')
-  // const note = await Note.findOne({id})
-  const note = null
-  console.log(note, 'hasnote')
+  const note = await Note.findOne({id})
   if (note) {
     ctx.status = 403
     ctx.body = { status: false, message: 'note id already exist.' }

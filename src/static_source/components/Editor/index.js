@@ -20,7 +20,6 @@ const myEditor = ({
     editorRef.current.focus()
   }
   
-  console.log(editorConfig)
   const handleSubmit = () => onSubmit(editorState)
 
   return (

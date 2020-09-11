@@ -42,10 +42,6 @@ class App extends Component {
   render() {
 
     return (
-      // <div>
-      //   <Navi />
-      //   <NoteList />
-      // </div>
       <Router>
         <Navi />
         <Switch>

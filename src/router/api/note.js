@@ -1,5 +1,6 @@
 const Router = require('@koa/router')
 const { Note } = require('../../models/note')
+const { User } = require('../../models/user')
 const { requiredLogin, getUser } = require('../utils')
 const noteInstance = new Router()
 
@@ -28,7 +29,17 @@ noteInstance.prefix('/note')
 })
 .get('/:id', async ctx => {
   const { id } = ctx.params
-  ctx.body = await Note.findOne({id}, {_id: 0, __v: 0})
+  const note = await Note.findOne({id}, {_id: 0, __v: 0})
+  if (note) {
+    const user = await User.findOne({uid: note.author_uid}, {_id: 0, __v: 0, sessionKey: 0, password: 0})
+    
+    const body = {
+      ...note.toObject(),
+      user: user.toObject()
+    }
+    delete body.author_uid
+    ctx.body = body
+  }
 })
 .post('/:id', 
 requiredLogin,

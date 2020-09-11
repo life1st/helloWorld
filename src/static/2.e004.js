@@ -1,2 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[2],{61:function(e,n,t){"use strict";t.r(n);var a=t(0),o=t.n(a),c=t(27),i=t(8),l=t(2);n.default=function(){var e=Object(l.h)().id,n=Object(l.f)(),t=Object(c.a)(e,i.a.note),a=t.isLoading,u=t.data;return console.log(a,u),o.a.createElement("div",null,"Note. ",e,o.a.createElement("div",null,o.a.createElement("button",{onClick:function(){n.push("/")}},"Back Home")))}}}]);
-//# sourceMappingURL=2.e004.js.map

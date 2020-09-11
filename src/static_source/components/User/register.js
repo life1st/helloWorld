@@ -26,7 +26,8 @@ const Register = ({onRegisterSuccess = () => {}, }) => {
     if (formData.password === formData.password_repect) {
       API.register(formData.name, formData.password, formData.id).then(res => {
         if (res.status === 200) {
-          onRegisterSuccess()
+          setFormShowable(false)
+          onRegisterSuccess(res.data)
         }
       })
     } else {

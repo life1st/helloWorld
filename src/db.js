@@ -1,9 +1,14 @@
 const mongoose = require('mongoose')
+const { isLoacl } = require('./utils/env')
 const host = (password) => (`mongodb+srv://jiaoyang:${password}@cluster0-kyrqp.mongodb.net/blog?retryWrites=true`)
 
 const connect = async () => {
   if (!dbHelper.status.isConnected) {
-    await mongoose.connect(host(process.env.MONGO_PWD))
+    if (isLoacl) {
+      await mongoose.connect('mongodb://localhost:27017/blog')
+    } else {
+      await mongoose.connect(host(process.env.MONGO_PWD))
+    }
   }
 }
 const db = mongoose.connection

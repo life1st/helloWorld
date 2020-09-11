@@ -4,11 +4,18 @@ import { API } from '../../utils/Api'
 import { createRandomId } from '../../utils/utils'
 import css from './Editor.scss'
 import { convertToRaw } from 'draft-js'
+import { useHistory, useLocation, useParams } from 'react-router-dom'
 
 const EditorPage = () => {
+  const history = useHistory()
+  const location = useLocation()
+  
+  // const isEdit = location.path.includes('/edit')
+  console.log(location)
+
+
   const [ title, setTitle ] = useState('')
   const id = createRandomId()
-
   const handleTitleInput = (e) => {
     const v = e.target.value
     setTitle(v)
@@ -22,7 +29,9 @@ const EditorPage = () => {
         content: JSON.stringify(convertToRaw(content)),
         id
       }).then(res => {
-        console.log(res, 'create')
+        if (res.status) {
+          history.replace(`/note/${id}`)
+        }
       })
     }
   }
@@ -31,8 +40,8 @@ const EditorPage = () => {
     <div>
       <input
         className={css.title}
-        type="text" 
-        placeholder='title' 
+        type="text"
+        placeholder='title'
         value={title}
         onChange={handleTitleInput}
       />

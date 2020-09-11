@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { API } from '../../utils/Api'
 import { useQuery } from 'react-query'
 import { useHistory } from 'react-router-dom'
+import css from './index.scss'
 
 const NoteList = (props) => {
   // const [notes, setNotes] = useState(null)
@@ -21,12 +22,13 @@ const NoteList = (props) => {
   }
   
   return (
-    <div>
+    <div className={css.noteList}>
       {
         isLoading 
         ? 'loading notes' 
         : notes.map(note => (
           <p 
+            className={css.noteItem}
             key={note.id}
             onClick={() => {handleNoteClick(note.id)}}
           >

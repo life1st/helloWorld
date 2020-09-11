@@ -13,8 +13,10 @@ module.exports = {
     index: path.join(root, '/src/static_source/index.js')
   },
   output: {
-    filename: isDev ? '[name].bundle.js' : '[name].bundle[hash:6].js',
-    path: isDev ? path.join(root, '/src/static_source/dist') : path.join(root, '/src/static')
+    filename: isDev ? '[name].bundle.js' : '[name].[hash:6].js',
+    chunkFilename: isDev ? '[name].bundle.js' : '[name].[chunkhash:4].js',
+    path: isDev ? path.join(root, '/src/static_source/dist') : path.join(root, '/src/static'),
+    publicPath: '/'
   },
   node: { fs: 'empty' },
   module: {
@@ -28,13 +30,14 @@ module.exports = {
           options: {
             presets: ['@babel/preset-env', '@babel/preset-react'],
             plugins: [
-              '@babel/plugin-proposal-class-properties'
+              '@babel/plugin-proposal-class-properties',
+              'syntax-dynamic-import'
             ]
           }
         }
       },
       {
-        test: /\.s(c|a)ss$/,
+        test: /\.s*(c|a)ss$/,
         use: [
           isDev ? 'style-loader' : {
             loader: MiniCssExtractPlugin.loader,
@@ -102,7 +105,13 @@ module.exports = {
     host: '0.0.0.0',
     port: 8000,
     hot: true,
+    historyApiFallback: true,
     proxy: {
+      // '/api': {
+      //   target: 'https://helloworld-git-v2.life1st.vercel.app',
+      //   secure: false,
+      //   changeOrigin: true
+      // }
       '/api': 'http://localhost:3000'
     }
   },

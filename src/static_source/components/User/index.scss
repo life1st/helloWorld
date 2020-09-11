@@ -1,0 +1,23 @@
+.registerForm {
+  position: absolute;
+  top: 0;
+  padding: 12px 18px;
+  border: 1px solid #ccc;
+  margin: 10px;
+  background: #fff;
+  input {
+    border: transparent;
+    border-bottom: 1px dashed #ccc;
+  }
+}
+.registerContainer {
+  position: relative;
+}
+.mod {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: transparent;
+}

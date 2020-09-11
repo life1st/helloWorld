@@ -1,22 +1,22 @@
 import { User } from '../models/user'
-const requiredLogin = (ctx) => {
+const requiredLogin = (ctx, next) => {
   const excludePath = [
     '/login', '/register'
   ]
 
   if (ctx.req.method.toLowerCase() === 'get') {
-    return false
+    next()
   }
 
   if (excludePath.some(path => ctx.req.url.includes(path))) {
-    return false
+    next()
   }
 
   if (!ctx.session.key) {
     ctx.status = 403
-    ctx.body = { status: false, message: 'login required.' }
-    return true
+    return ctx.body = { status: false, message: 'login required.' }
   }
+  next()
 }
 
 const getUser = async (ctx) => {

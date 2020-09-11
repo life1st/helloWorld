@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { API } from '../../utils/Api'
+import css from './index.scss'
 
 const Register = ({onRegisterSuccess = () => {}, }) => {
   const [formData, setFormData] = useState({
@@ -9,8 +10,9 @@ const Register = ({onRegisterSuccess = () => {}, }) => {
     password_repect: ''
   })
 
-  const handleInput = (type) => {
+  const [showForm, setFormShowable] = useState(false)
 
+  const handleInput = (type) => {
     return (e) => {
       const text = e.target.value
       setFormData({
@@ -37,13 +39,30 @@ const Register = ({onRegisterSuccess = () => {}, }) => {
     }
   }
 
+  const handleCloseMod = (e) => {
+    e.preventDefault()
+    e.stopPropagation()
+    setFormShowable(false)
+  }
+
   return (
-    <div>
-      <input type="text" onInput={handleInput('name')} placeholder='name'/> <br/>
-      <input type="text" onInput={handleInput('id')} placeholder='id'/> <br/>
-      <input type="text" onInput={handleInput('password')} placeholder='password'/> <br/>
-      <input type="text" onInput={handleInput('password_repect')} placeholder='password_again'/> <br/>
-      <button onClick={handleSubmit}>Register</button>
+    <div className={css.registerContainer}>
+      {
+        showForm ? (
+          <>
+          <div className={css.mod} onClick={handleCloseMod}></div>
+          <div className={css.registerForm}>
+            <input type="text" onInput={handleInput('name')} placeholder='name'/> <br/>
+            <input type="text" onInput={handleInput('id')} placeholder='id'/> <br/>
+            <input type="text" onInput={handleInput('password')} placeholder='password'/> <br/>
+            <input type="text" onInput={handleInput('password_repect')} placeholder='password_again'/> <br/>
+            <button onClick={handleSubmit}>Register</button>
+          </div>
+          </>
+        ) : (
+          <button onClick={() => {setFormShowable(true)}}>Register</button>
+        )
+      }
     </div>
   )
 }

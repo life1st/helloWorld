@@ -1,7 +1,10 @@
 import React, { useState } from 'react'
 import { API } from '../../utils/Api'
 
-const Login = ({onLoginSuccess = () => {}}) => {
+const Login = ({
+  onLoginSuccess = () => {},
+  onLoginFaild = () => {}
+}) => {
   const [formData, setFromData] = useState({
     id: '',
     password: ''
@@ -12,6 +15,8 @@ const Login = ({onLoginSuccess = () => {}}) => {
       if (res.status === 200) {
         onLoginSuccess(res.data)
       }
+    }).catch(e => {
+      onLoginFaild(e)
     })
   }
   const handleInput = (type) => {

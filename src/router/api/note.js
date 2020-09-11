@@ -26,8 +26,13 @@ noteInstance.prefix('/note')
   
   ctx.body = await Note.find({}, {_id: 0, __v: 0}).skip(start).limit(page_count)
 })
-.post('/:id', async ctx => {
-  if (requiredLogin(ctx)) return
+.get('/:id', async ctx => {
+  const { id } = ctx.params
+  ctx.body = await Note.findOne({id}, {_id: 0, __v: 0})
+})
+.post('/:id', 
+requiredLogin,
+async ctx => {
   const { id } = ctx.params
   if (!id || Number.isNaN(Number(id))) {
     ctx.status = 403
@@ -55,8 +60,9 @@ noteInstance.prefix('/note')
     }
   }
 })
-.put('/:id', async ctx => {
-  if (requiredLogin(ctx)) return
+.put('/:id',
+requiredLogin,
+async ctx => {
   const { id } = ctx.params
   if (!id || Number.isNaN(Number(id))) {
     ctx.status = 403
@@ -84,8 +90,9 @@ noteInstance.prefix('/note')
     ctx.body = { status: false, message: 'not found.' }
   }
 })
-.delete('/:id', async ctx => {
-  if (requiredLogin(ctx)) return
+.delete('/:id',
+requiredLogin,
+async ctx => {
   const { id } = ctx.params
   if (!id || Number.isNaN(Number(id))) {
     ctx.status = 403

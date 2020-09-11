@@ -45,30 +45,24 @@ noteInstance.prefix('/note')
 requiredLogin,
 async ctx => {
   const { id } = ctx.params
-  if (!id || Number.isNaN(Number(id))) {
+  if (!id) {
     ctx.status = 403
     ctx.body = { status: false, message: 'invalid note id.' }
-    return 
+    return
   }
 
-  const note = await Note.findOne({id})
-  
+  console.log('before note')
+  console.log(ctx.user, 'user...')
+  // const note = await Note.findOne({id})
+  const note = null
+  console.log(note, 'hasnote')
   if (note) {
     ctx.status = 403
     ctx.body = { status: false, message: 'note id already exist.' }
   } else {
-    const {
-      title,
-      content
-    } = ctx.request.body
-    const user = await getUser(ctx)
-    if (user) {
-      const note = await new Note({id, title, content, author_uid: user.uid}).save()
-      ctx.body = { status: true, message: 'saved.' }
-    } else {
-      ctx.status = 403
-      ctx.body = { status: false, message: 'invalid user info.' }
-    }
+    const { title, content } = ctx.request.body
+    await new Note({id, title, content, author_uid: ctx.user.uid}).save()
+    ctx.body = { status: true, message: 'saved.' }
   }
 })
 .put('/:id',

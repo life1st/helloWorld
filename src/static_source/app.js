@@ -14,6 +14,9 @@ const Login = loadable(() => import(
 const Note = loadable(() => import(
   './Pages/Note'
 ))
+const Editor = loadable(() => import(
+  './Pages/Note/Editor'
+))
 
 class App extends Component {
   state = {
@@ -46,6 +49,7 @@ class App extends Component {
         <Navi />
         <Switch>
           <Route path='/login' component={Login} />
+          <Route path='/note/create' component={Editor} />
           <Route path='/note/:id' component={Note} />
           <Route path='/' component={NoteList} />
         </Switch>

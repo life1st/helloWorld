@@ -59,6 +59,7 @@ const User = (props) => {
         <div>
           <p>
             {userInfo.name}
+            <button onClick={() => { history.push('/note/create') }}>+ Create Note</button>
             <button onClick={handleLogout}>Logout</button>
           </p>
         </div>

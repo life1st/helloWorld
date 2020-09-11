@@ -1,5 +1,5 @@
 import { User } from '../models/user'
-const requiredLogin = (ctx, next) => {
+const requiredLogin = async (ctx, next) => {
   const excludePath = [
     '/login', '/register'
   ]
@@ -14,9 +14,13 @@ const requiredLogin = (ctx, next) => {
 
   if (!ctx.session.key) {
     ctx.status = 403
-    return ctx.body = { status: false, message: 'login required.' }
+    ctx.body = { status: false, message: 'login required.' }
+    return Promise.reject()
+  } else {
+    const user = await getUser(ctx)
+    ctx.user = user
+    return next()
   }
-  next()
 }
 
 const getUser = async (ctx) => {

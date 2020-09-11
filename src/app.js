@@ -48,6 +48,7 @@ app
     }
     return
   }
+  
   if (ctx.body && !ctx.status) {
     ctx.status = 200
   }

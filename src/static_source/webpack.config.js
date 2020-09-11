@@ -87,6 +87,7 @@ module.exports = {
     !isDev && new HtmlPlugin({
       title: 'Blog',
       meta: {
+        charset: 'utf-8',
         viewport: 'width=device-width, initial-scale=1, shrink-to-fit=no'
       },
       templateContent: '<div id="root"></div>',
@@ -107,12 +108,12 @@ module.exports = {
     hot: true,
     historyApiFallback: true,
     proxy: {
-      '/api': {
-        target: 'https://helloworld-git-v2.life1st.vercel.app',
-        secure: false,
-        changeOrigin: true
-      }
-      // '/api': 'http://localhost:3000'
+      // '/api': {
+      //   target: 'https://helloworld-git-v2.life1st.vercel.app',
+      //   secure: false,
+      //   changeOrigin: true
+      // }
+      '/api': 'http://localhost:3000'
     }
   },
   devtool: 'source-map'

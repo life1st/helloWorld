@@ -6,6 +6,16 @@ const note = (id) => {
 
   return axios.get(url).then(res => res.data)
 }
+const createNote = ({
+  title, content, id
+}) => {
+  if (!content || !id) return
+  const url = `/api/note/${id}`
+
+  return axios.post(url, {
+    content, title
+  }).then(res => res.data)
+}
 const login = (data) => {
   const url = '/api/user/login'
 
@@ -28,5 +38,6 @@ const register = (name, password, id) => {
 }
 
 export const API = {
-  note, login, logout, user, register
+  note, createNote, login, logout, user, register
 }
+ 

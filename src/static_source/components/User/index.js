@@ -38,7 +38,6 @@ const User = (props) => {
   }
 
   const handleChangeForm = () => {
-    console.log(hiddenFrom, location)
     if (hiddenFrom === 'login') {
       history.push('/login')
     } else {

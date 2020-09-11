@@ -17,7 +17,6 @@ const NotePage = () => {
   }
   const { user } = data
   const editorState = EditorState.createWithContent(convertFromRaw(JSON.parse(data.content)))
-  console.log(editorState.getCurrentContent().hasText())
   return (
     <div>
       <h1>{data.title}</h1>

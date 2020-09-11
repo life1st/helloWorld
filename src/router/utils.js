@@ -15,7 +15,7 @@ const requiredLogin = async (ctx, next) => {
   if (!ctx.session.key) {
     ctx.status = 403
     ctx.body = { status: false, message: 'login required.' }
-    return Promise.reject()
+    return
   } else {
     const user = await getUser(ctx)
     ctx.user = user

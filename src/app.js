@@ -6,6 +6,8 @@ const { connect, dbHelper } = require('./db')
 const static = require('koa-static')
 const session = require('koa-session')
 const { staticPath } = require('../config')
+const fsp = require('fs').promises
+const path = require('path')
 
 const checkIfIgnore = url => {
   const urls = ['/favicon.ico']
@@ -36,7 +38,10 @@ app
       404: 'not found.', 
       503: 'server error.'
     }
-    if (ctx.status && statusMap2Msg[ctx.status]) {
+    if (ctx.status === 404 && !ctx.req.url.includes('/api')) {
+      const html = await fsp.readFile(path.join(staticPath, '/index.html'), {encoding: 'utf8'})
+      ctx.body = html
+    } else if (ctx.status && statusMap2Msg[ctx.status]) {
       ctx.body = statusMap2Msg[ctx.status]
     } else {
       ctx.body = { status: false, message: 'unknown error.' }

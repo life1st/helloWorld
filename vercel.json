@@ -5,8 +5,11 @@
     "MONGO_PWD": "@mongo_pwd",
     "SESSION_KEY": "@session_key_blog"
   },
+  "engines": {
+    "node": "12.x"
+  },
   "builds": [{
-    "src": "src/app.js", "use": "@now/node"
+    "src": "src/app.js", "use": "@vercel/node"
   }],
   "routes": [
     {

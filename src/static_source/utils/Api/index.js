@@ -21,6 +21,16 @@ const deleteNote = (id) => {
 
   return axios.delete(url).then(res => res.data)
 }
+const editNote = ({
+  title, content, id
+}) => {
+  if (!content || !id) return
+  const url = `/api/note/${id}`
+
+  return axios.put(url, {
+    title, content
+  }).then(res => res.data)
+}
 const login = (data) => {
   const url = '/api/user/login'
 
@@ -43,5 +53,5 @@ const register = (name, password, id) => {
 }
 
 export const API = {
-  note, createNote, deleteNote, login, logout, user, register
+  note, createNote, deleteNote, editNote, login, logout, user, register
 }

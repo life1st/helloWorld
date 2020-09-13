@@ -4,15 +4,10 @@ import { API } from '../../utils/Api'
 import { createRandomId } from '../../utils/utils'
 import css from './Editor.scss'
 import { convertToRaw } from 'draft-js'
-import { useHistory, useLocation, useParams } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 
 const EditorPage = () => {
   const history = useHistory()
-  const location = useLocation()
-  
-  // const isEdit = location.path.includes('/edit')
-  console.log(location)
-
 
   const [ title, setTitle ] = useState('')
   const id = createRandomId()

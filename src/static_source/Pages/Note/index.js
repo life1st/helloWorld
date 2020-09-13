@@ -17,7 +17,9 @@ const NotePage = () => {
     return (<div>Loading...</div>)
   }
   const { user } = data
-  const editorState = EditorState.createWithContent(convertFromRaw(JSON.parse(data.content)))
+  const editorState = EditorState.createWithContent(
+    convertFromRaw(JSON.parse(data.content))
+  )
 
   const handleEdit = () => {
     history.push(`/note/${id}/edit`)

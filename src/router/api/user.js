@@ -45,7 +45,8 @@ userInstance.prefix('/user')
       ctx.body = { status: false, message: 'password invalid.'}
     }
   } else {
-    ctx.status = 403
+    ctx.status = 401
+    ctx.body = { status: false, message: 'invalid user.'}
   }
 })
 .post('/logout', async ctx => {

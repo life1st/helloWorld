@@ -39,6 +39,7 @@ app
       503: 'server error.'
     }
     ctx.status = ctx.status
+    console.log(ctx.body)
     if (ctx.status === 404 && !ctx.req.url.includes('/api')) {
       const html = await fsp.readFile(path.join(staticPath, '/index.html'), {encoding: 'utf8'})
       ctx.body = html

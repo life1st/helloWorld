@@ -10,12 +10,12 @@ const { root } = require('../../config')
 module.exports = {
   mode: isDev ? 'development' : 'production',
   entry: {
-    index: path.join(root, '/src/static_source/index.js')
+    index: path.join(root, '/src/static/index.js')
   },
   output: {
     filename: isDev ? '[name].bundle.js' : '[name].[hash:6].js',
     chunkFilename: isDev ? '[name].bundle.js' : '[name].[chunkhash:4].js',
-    path: isDev ? path.join(root, '/src/static_source/dist') : path.join(root, '/src/static'),
+    path: isDev ? path.join(root, '/src/static/dist') : path.join(root, '/src/_dist'),
     publicPath: '/'
   },
   node: { fs: 'empty' },
@@ -24,7 +24,7 @@ module.exports = {
       {
         test: /\.js$/,
         enforce: 'post',
-        include: path.join(root, '/src/static_source'),
+        include: path.join(root, '/src/static'),
         use: {
           loader: 'babel-loader',
           options: {
@@ -101,7 +101,7 @@ module.exports = {
     })
   ].filter(Boolean),
   devServer: {
-    contentBase: path.join(root, '/src/static_source'),
+    contentBase: path.join(root, '/src/static'),
     disableHostCheck: true,
     host: '0.0.0.0',
     port: 8000,

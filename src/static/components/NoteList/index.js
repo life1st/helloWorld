@@ -15,7 +15,9 @@ const NoteList = (props) => {
   //   }
   // }, [notes])
 
-  const { isLoading, data: notes } = useQuery(['notes', notes], () => API.note())
+  const { isLoading, data: notes } = useQuery([], API.note, {
+    refetchOnWindowFocus: false
+  })
   const history = useHistory()
   const handleNoteClick = (id) => {
     history.push(`/note/${id}`)

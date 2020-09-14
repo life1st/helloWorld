@@ -9,7 +9,7 @@ const myEditor = ({
   onSubmit = () => {},
   editorConfig = {}
 }) => {
-  const [ editorState, setEditorState ] = useState(() => 
+  const [ editorState, setEditorState ] = useState(
     editorConfig.editorState
     ? editorConfig.editorState
     : EditorState.createEmpty()

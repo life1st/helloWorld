@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import NoteList from './components/NoteList'
 import Navi from './components/Navi'
 import {
   BrowserRouter as Router,
@@ -14,11 +13,11 @@ const Login = loadable(() => import(
 const Note = loadable(() => import(
   './Pages/Note'
 ))
-const Create = loadable(() => import(
-  './Pages/Note/Create'
+const Editor = loadable(() => import(
+  './Pages/Note/Editor'
 ))
-const Edit = loadable(() => import(
-  './Pages/Note/Edit'
+const NoteList = loadable(() => import(
+  './components/NoteList'
 ))
 
 class App extends Component {
@@ -52,8 +51,8 @@ class App extends Component {
         <Navi />
         <Switch>
           <Route path='/login' component={Login} />
-          <Route path='/note/create' component={Create} />
-          <Route path='/note/:id/edit' component={Edit} />
+          <Route path='/note/create' component={Editor} />
+          <Route path='/note/:id/edit' component={Editor} />
           <Route path='/note/:id' component={Note} />
           <Route path='/' component={NoteList} />
         </Switch>

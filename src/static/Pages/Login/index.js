@@ -7,6 +7,7 @@ const LoginPage = () => {
 
   const handleLoginSuccess = (e) => {
     console.log(e)
+    userState.changeState(e)
     history.push('/')
   }
   

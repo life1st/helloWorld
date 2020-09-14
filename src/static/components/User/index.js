@@ -3,34 +3,26 @@ import css from './index.scss'
 import { API } from '../../utils/Api'
 import Login from './login'
 import Register from './register'
-import { useHistory, useLocation } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
+import { useQuery } from 'react-query'
 
-
-const User = (props) => {
-  const [reqStatus, setReqStatus] = useState('done')
+const User = () => {
   const [userInfo, setUserInfo] = useState(null)
   const [hiddenFrom, setShowForm] = useState('login')
   const history = useHistory()
-  const location = useLocation()
+
+  const { isLoading, data, refetch } = useQuery(null, API.user, {
+    refetchOnWindowFocus: false,
+  })
 
   useEffect(() => {
-    if (reqStatus === 'done') {
-      setReqStatus('loading')
-      !userInfo ? API.user().then(res => {
-        setReqStatus('done')
-        if (res.status === 200) {
-          setUserInfo(res.data)
-        }
-      }).catch(() => {
-        setReqStatus('done')
-      }) : setReqStatus('done')
+    if (data) {
+      setUserInfo(data)
     }
-  }, [userInfo])
+  }, [ userInfo, data ])
 
   const handleLogout = () => {
-    setReqStatus('loading')
     API.logout().then(res => {
-      setReqStatus('done')
       if (res.status === 200) {
         setUserInfo(null)
       }
@@ -41,12 +33,11 @@ const User = (props) => {
     if (hiddenFrom === 'login') {
       history.push('/login')
     } else {
-      // setShowForm('login')
       setShowForm('register')
     }
   }
 
-  if (reqStatus === 'loading') {
+  if (isLoading === 'loading') {
     return (
       <div>Loading...</div>
     )

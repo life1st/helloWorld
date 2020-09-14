@@ -9,7 +9,11 @@ import css from './index.scss'
 const NotePage = () => {
   const { id } = useParams()
   const history = useHistory()
-  const { isLoading, data, error } = useQuery(id, API.note)
+  const { isLoading, data, error } = useQuery(id, API.note, {
+    retry: false,
+    refetchOnWindowFocus: false
+  })
+
   if (error) {
     history.replace('/')
   }
@@ -26,7 +30,7 @@ const NotePage = () => {
   }
   const handleDelete = () => {
     if (confirm(`ensure delete this note: ${data.title} ?`)) {
-      API.deleteNote(id).then(data => {
+      API.deleteNote(id).then(() => {
         history.push('/')
       })
     }

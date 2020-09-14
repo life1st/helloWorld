@@ -5,6 +5,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const HtmlPlugin = require('html-webpack-plugin')
 const autoprefixer = require('autoprefixer')
 const { CleanWebpackPlugin: CleanPlugin } = require('clean-webpack-plugin')
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const { root } = require('../../config')
 
 module.exports = {
@@ -98,7 +99,8 @@ module.exports = {
     isDev && new webpack.HotModuleReplacementPlugin(),
     isDev && new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
-    })
+    }),
+    !isDev && new BundleAnalyzerPlugin()
   ].filter(Boolean),
   devServer: {
     contentBase: path.join(root, '/src/static'),
@@ -108,12 +110,12 @@ module.exports = {
     hot: true,
     historyApiFallback: true,
     proxy: {
-      // '/api': {
-      //   target: 'https://helloworld-git-v2.life1st.vercel.app',
-      //   secure: false,
-      //   changeOrigin: true
-      // }
-      '/api': 'http://localhost:3000'
+      '/api': {
+        target: 'https://helloworld-git-v2.life1st.vercel.app',
+        secure: false,
+        changeOrigin: true
+      }
+      // '/api': 'http://localhost:3000'
     }
   },
   devtool: 'source-map'

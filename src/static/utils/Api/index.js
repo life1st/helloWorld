@@ -44,7 +44,7 @@ const logout = (data) => {
 const user = () => {
   const url = '/api/user'
 
-  return axios.get(url)
+  return axios.get(url).then(res => res.data)
 }
 const register = (name, password, id) => {
   const url = '/api/user/register'

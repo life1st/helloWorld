@@ -55,6 +55,5 @@ app
 .use(bodyParser())
 .use(apiInstance.middleware())
 
-app.listen(3000)
-
-module.exports = app.callback()
+// app.listen(3000)
+app.listen(process.env.PORT || 8008)

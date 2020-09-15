@@ -5,6 +5,7 @@ const host = (password) => (`mongodb+srv://jiaoyang:${password}@cluster0-kyrqp.m
 const connect = async () => {
   if (!dbHelper.status.isConnected) {
     if (isLoacl) {
+      console.log('connect db locally.')
       await mongoose.connect('mongodb://localhost:27017/blog')
     } else {
       await mongoose.connect(host(process.env.MONGO_PWD))

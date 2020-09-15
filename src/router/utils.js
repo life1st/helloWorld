@@ -1,4 +1,4 @@
-import { User } from '../models/user'
+const { User } = require('../models/user')
 const requiredLogin = async (ctx, next) => {
   const excludePath = [
     '/login', '/register'

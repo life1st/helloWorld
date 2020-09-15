@@ -4,7 +4,7 @@
   "description": "blog ",
   "main": "src/app.js",
   "scripts": {
-    "start": "vercel dev",
+    "start": "node ./src/app.js",
     "dev:static": "cross-env NODE_ENV=dev webpack-dev-server --config ./src/static/webpack.config.js",
     "build:static": "cross-env NODE_ENV=prod webpack --config ./src/static/webpack.config.js"
   },

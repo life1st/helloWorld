@@ -1,4 +1,3 @@
-const { db } = require('../db')
 const mongoose = require('mongoose')
 const uuidV1 = require('uuid/v1')
 const bcrypt = require('bcrypt')
@@ -13,7 +12,16 @@ const userSchema = new mongoose.Schema({
   sessionKey: { type: String }
 })
 
-const User = db.model('user', userSchema)
+userSchema.set('toJSON', {
+  transform: (doc, ret) => {
+    delete ret.__v
+    delete ret._id
+    delete ret.password
+    delete ret.sessionKey
+  }
+})
+
+const User = mongoose.model('User', userSchema)
 
 User.prototype.login = async function(sessionKey, password) {
   const { password: hashedPwd } = this

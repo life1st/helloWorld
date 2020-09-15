@@ -11,7 +11,7 @@ userInstance.prefix('/user')
     ctx.status = 403
     ctx.body = { status: false, message: 'not login yet.'}
   } else {
-    const user = await User.findOne({sessionKey: key}, {_id: 0, __v: 0, sessionKey: 0, password: 0})
+    const user = await User.findOne({sessionKey: key})
 
     if (user) {
       ctx.body = user
@@ -27,7 +27,7 @@ userInstance.prefix('/user')
     password
   } = ctx.request.body
 
-  const user = await User.findOne({id}, {__v: 0})
+  const user = await User.findOne({id})
 
   if (user) {
     ctx.session.key = String(Math.random()).split('.').pop() + Date.now()

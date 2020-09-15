@@ -1,4 +1,3 @@
-const { db } = require('../db')
 const mongoose = require('mongoose')
 
 const subjectSchema = new mongoose.Schema({
@@ -18,6 +17,6 @@ const subjectSchema = new mongoose.Schema({
   },
 })
 
-const Subject = db.model('subject', subjectSchema)
+const Subject = mongoose.model('subject', subjectSchema)
 
 module.exports = { Subject }

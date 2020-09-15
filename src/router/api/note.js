@@ -25,17 +25,20 @@ noteInstance.prefix('/note')
     start = 0
   }
   
-  ctx.body = await Note.find({}, {_id: 0, __v: 0}).skip(start).limit(page_count)
+  ctx.body = await Note.find({}, {content: 0}).skip(start).limit(page_count).populate('author', '-group')
 })
 .get('/:id', async ctx => {
   const { id } = ctx.params
-  const note = await Note.findOne({id}, {_id: 0, __v: 0})
+  const note = await Note.findOne({id}, {_id: 0, __v: 0}).populate('author')
   if (note) {
-    const user = await User.findOne({uid: note.author_uid}, {_id: 0, __v: 0, sessionKey: 0, password: 0})
-    
     const body = {
       ...note.toObject(),
-      user: user.toObject()
+    }
+    if (!body.author) {
+      body.user = await User.findOne({uid: note.author_uid}, {_id: 0, __v: 0, sessionKey: 0, password: 0})
+      Note.update({author: body.user._id})
+    } else {
+      body.user = body.author
     }
     delete body.author_uid
     ctx.body = body
@@ -57,7 +60,7 @@ async ctx => {
     ctx.body = { status: false, message: 'note id already exist.' }
   } else {
     const { title, content } = ctx.request.body
-    await new Note({id, title, content, author_uid: ctx.user.uid}).save()
+    await new Note({id, title, content, author_uid: ctx.user.uid, author: ctx.user._id}).save()
     ctx.body = { status: true, message: 'saved.' }
   }
 })

@@ -8,42 +8,49 @@ import {
 import loadable from '@loadable/component'
 
 const pages = [
-  {
-    name: 'Login',
-    path: '/login',
-    component: loadable(() => import(
+  [
+    'Login',
+    '/login',
+    loadable(() => import(
       /* webpackChunkName: 'Login' */
       './Pages/Login'
     ))
-  }, 
-  {
-    name: 'Note',
-    path: '/note/:id',
-    component: loadable(() => import(
+  ],
+  [
+    'Note',
+    '/note/:id',
+    loadable(() => import(
       './Pages/Note'
     ))
-  },
-  {
-    name: 'note_create',
-    path: '/note/:id/create',
-    component: loadable(() => import(
+  ],
+  [
+    'note_create',
+    '/note/:id/create',
+    loadable(() => import(
       './Pages/Note/Editor'
     ))
-  },
-  {
-    name: 'note_edit',
-    path: '/note/:id/edit',
-    component: loadable(() => import(
+  ],
+  [
+    'note_edit',
+    '/note/:id/edit',
+    loadable(() => import(
       './Pages/Note/Editor'
     ))
-  },
-  {
-    name: 'note_list',
-    path: '/',
-    component: loadable(() => import(
+  ],
+  [
+    'Keyframe',
+    '/keyframe',
+    loadable(() => import(
+      './Pages/Keyframe'
+    ))
+  ],
+  [
+    'note_list',
+    '/',
+    loadable(() => import(
       './components/NoteList'
     ))
-  }
+  ],
 ]
 
 class App extends Component {
@@ -77,8 +84,8 @@ class App extends Component {
         <Navi />
         <Switch>
           {
-            pages.map(page => (
-              <Route key={page.path} path={page.path} component={page.component}/>
+            pages.map(([name, path, component]) => (
+              <Route key={path} path={path} component={component}/>
             ))
           }
         </Switch>

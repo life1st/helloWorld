@@ -4,11 +4,15 @@ const host = (password) => (`mongodb+srv://jiaoyang:${password}@cluster0-kyrqp.m
 
 const connect = async () => {
   if (!dbHelper.status.isConnected) {
+    const options = {
+      useNewUrlParser: true,
+      useUnifiedTopology: true
+    }
+    console.log(`connect db. ${isLoacl ? 'locally' : 'remotely'}`)
     if (isLoacl) {
-      console.log('connect db locally.')
-      await mongoose.connect('mongodb://localhost:27017/blog')
+      await mongoose.connect('mongodb://localhost:27017/blog', options)
     } else {
-      await mongoose.connect(host(process.env.MONGO_PWD))
+      await mongoose.connect(host(process.env.MONGO_PWD), options)
     }
   }
 }

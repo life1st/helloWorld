@@ -26,6 +26,7 @@ module.exports = {
         test: /\.js$/,
         enforce: 'post',
         include: path.join(root, '/src/static'),
+        exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
           options: {

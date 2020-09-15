@@ -1,4 +1,3 @@
-const aesjs = require('aes-js')
 const Router = require('@koa/router')
 const { User } = require('../../models/user')
 const userInstance = new Router()
@@ -34,12 +33,7 @@ userInstance.prefix('/user')
     const isPwdCorrect = await user.login(ctx.session.key, password)
 
     if (isPwdCorrect) {
-      ctx.body = Object.keys(user._doc)
-        .filter(k => !['password', 'sessionKey', '_id'].includes(k))
-        .reduce((acc, k) => {
-          acc[k] = user[k]
-          return acc
-        }, {})
+      ctx.body = user
     } else {
       ctx.status = 403
       ctx.body = { status: false, message: 'password invalid.'}

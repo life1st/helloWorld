@@ -1,7 +1,7 @@
 const Router = require('@koa/router')
 const { Note } = require('../../models/note')
 const { User } = require('../../models/user')
-const { requiredLogin, getUser } = require('../utils')
+const { requiredLogin } = require('../utils')
 const noteInstance = new Router()
 
 noteInstance.prefix('/note')

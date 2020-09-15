@@ -928,9 +928,9 @@
     urijs "^1.19.2"
 
 "@loadable/component@^5.13.1":
-  version "5.13.1"
-  resolved "https://registry.npmjs.org/@loadable/component/-/component-5.13.1.tgz#b7650a76f9cc1cccf17f79265dc05b9e62daaaa2"
-  integrity sha512-qTNfTv5bVfb9eTKNUOMzPweRnxzNaxCmLZEsFEMn+kxpd86iXae+IpibXFJlnb052Q4fVkcWM2tvmWLc/+HzLg==
+  version "5.13.2"
+  resolved "https://registry.npmjs.org/@loadable/component/-/component-5.13.2.tgz#219b679c9e76bb5dd247923a3195ad3ef92cf977"
+  integrity sha512-eCtJhCFfUg7dzEBc5O4ZNfG0wftCLVSzpfOw9qPYJ16T/bmvrGRDdY8q/ARM4o90MOFlJzIRepnuXnqxB5ZUyQ==
   dependencies:
     "@babel/runtime" "^7.7.7"
     hoist-non-react-statics "^3.3.1"
@@ -1230,11 +1230,6 @@ acorn@^7.1.1:
   version "7.4.0"
   resolved "https://registry.npmjs.org/acorn/-/acorn-7.4.0.tgz#e1ad486e6c54501634c6c397c5c121daa383607c"
   integrity sha512-+G7P8jJmCHr+S+cLfQxygbWhXy+8YTVGzAkpEbcLo2mLoL7tij/VG41QSHACSf5QgYRhMZYHuNc6drJaO0Da+w==
-
-aes-js@^3.1.2:
-  version "3.1.2"
-  resolved "https://registry.npmjs.org/aes-js/-/aes-js-3.1.2.tgz#db9aabde85d5caabbfc0d4f2a4446960f627146a"
-  integrity sha512-e5pEa2kBnBOgR4Y/p20pskXI74UEz7de8ZGVo58asOtvSVG5YAbJeELPZxOmt+Bnz3rX753YKhfIn4X4l1PPRQ==
 
 ajv-errors@^1.0.0:
   version "1.0.1"
@@ -1960,9 +1955,9 @@ camelcase@^5.0.0, camelcase@^5.3.1:
   integrity sha512-L28STB170nwWS63UjtlEOE3dldQApaJXZkOI1uMFfzf3rRuPegHaHesyee+YxQ+W6SvRDQV6UrdOdRiR153wJg==
 
 caniuse-lite@^1.0.30001109, caniuse-lite@^1.0.30001125:
-  version "1.0.30001129"
-  resolved "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001129.tgz#e6514b94c0ef50f98cf7476daa91228ddd2ef7bc"
-  integrity sha512-9945fTVKS810DZITpsAbuhQG7Lam0tEfVbZlsBaCFZaszepbryrArS05PWmJSBQ6mta+v9iz0pUIAbW1eBILIg==
+  version "1.0.30001131"
+  resolved "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001131.tgz#afad8a28fc2b7a0d3ae9407e71085a0ead905d54"
+  integrity sha512-4QYi6Mal4MMfQMSqGIRPGbKIbZygeN83QsWq1ixpUwvtfgAZot5BrCKzGygvZaV+CnELdTwD0S4cqUNozq7/Cw==
 
 caseless@~0.12.0:
   version "0.12.0"
@@ -2120,6 +2115,21 @@ clone-response@^1.0.2:
   integrity sha1-0dyXOSAxTfZ/vrlCI7TuNQI56Ws=
   dependencies:
     mimic-response "^1.0.0"
+
+cloudinary-core@^2.10.2:
+  version "2.11.2"
+  resolved "https://registry.npmjs.org/cloudinary-core/-/cloudinary-core-2.11.2.tgz#01950e7c1e7c373d7a8141c18b7ddfc54374b75d"
+  integrity sha512-Dl545+AzPRGjx58cXB9gznXtA1dol0pmDqTxHos1hRcdbUcpUcuVzPkBnJjNO3F4K6BfZ5kSda9kzD+Qu7Yhgg==
+
+cloudinary@^1.23.0:
+  version "1.23.0"
+  resolved "https://registry.npmjs.org/cloudinary/-/cloudinary-1.23.0.tgz#27885567cf698e4ed5f5cc8d57974cb4b16db52b"
+  integrity sha512-akOxzroonvwWkuSVq7BI50nYpZPRXc5DbQIYETCVeKX9ZoToH2Gvc3MdUH63UtKiszuGYE51q2B+jQsJkBp2AQ==
+  dependencies:
+    cloudinary-core "^2.10.2"
+    core-js "3.6.5"
+    lodash "^4.17.11"
+    q "^1.5.1"
 
 co-body@^6.0.0:
   version "6.0.0"
@@ -2344,7 +2354,7 @@ core-js-compat@^3.6.2:
     browserslist "^4.8.5"
     semver "7.0.0"
 
-core-js@^3.6.4:
+core-js@3.6.5, core-js@^3.6.4:
   version "3.6.5"
   resolved "https://registry.npmjs.org/core-js/-/core-js-3.6.5.tgz#7395dc273af37fb2e50e9bd3d9fe841285231d1a"
   integrity sha512-vZVEEwZoIsI+vPEuoF9Iqf5H7/M3eeQqWlQnYa8FSKKePuYTf5MWnxb5SDAzCa60b3JBRS5g9b+Dq7b1y/RCrA==
@@ -2841,9 +2851,9 @@ ejs@^2.6.1:
   integrity sha512-7vmuyh5+kuUyJKePhQfRQBhXV5Ce+RnaeeQArKu1EAMpL3WbgMt5WG6uQZpEVvYSSsxMXRKOewtDk9RaTKXRlA==
 
 electron-to-chromium@^1.3.564:
-  version "1.3.567"
-  resolved "https://registry.npmjs.org/electron-to-chromium/-/electron-to-chromium-1.3.567.tgz#7a404288952ac990e447a7a86470d460ea953b8f"
-  integrity sha512-1aKkw0Hha1Bw9JA5K5PT5eFXC/TXbkJvUfNSNEciPUMgSIsRJZM1hF2GUEAGZpAbgvd8En21EA+Lv820KOhvqA==
+  version "1.3.568"
+  resolved "https://registry.npmjs.org/electron-to-chromium/-/electron-to-chromium-1.3.568.tgz#0fa28cd3e5cbd9e8c66f72309eef0646f65a5b66"
+  integrity sha512-j9MlEwgTHVW/lq93Hw8yhzA886oLjDm3Hz7eDkWP2v4fzLVuqOWhpNluziSnmR/tBqgoYldagbLknrdg+B7Tlw==
 
 elliptic@^6.5.3:
   version "6.5.3"
@@ -2968,9 +2978,9 @@ es-to-primitive@^1.2.1:
     is-symbol "^1.0.2"
 
 escalade@^3.0.2:
-  version "3.0.2"
-  resolved "https://registry.npmjs.org/escalade/-/escalade-3.0.2.tgz#6a580d70edb87880f22b4c91d0d56078df6962c4"
-  integrity sha512-gPYAU37hYCUhW5euPeR+Y74F7BL+IBsV93j5cvGriSaD1aG6MGsqsV1yamRdrWrb2j3aiZvb0X+UBOWpx3JWtQ==
+  version "3.1.0"
+  resolved "https://registry.npmjs.org/escalade/-/escalade-3.1.0.tgz#e8e2d7c7a8b76f6ee64c2181d6b8151441602d4e"
+  integrity sha512-mAk+hPSO8fLDkhV7V0dXazH5pDc6MrjBTPyD3VeKzxnVFjH1MIxbCdqGZB9O8+EwWakZs3ZCbDS4IpRt79V1ig==
 
 escape-goat@^2.0.0:
   version "2.1.1"
@@ -5922,6 +5932,11 @@ pupa@^2.0.1:
   dependencies:
     escape-goat "^2.0.0"
 
+q@^1.5.1:
+  version "1.5.1"
+  resolved "https://registry.npmjs.org/q/-/q-1.5.1.tgz#7e32f75b41381291d04611f1bf14109ac00651d7"
+  integrity sha1-fjL3W0E4EpHQRhHxvxQQmsAGUdc=
+
 qs@6.7.0:
   version "6.7.0"
   resolved "https://registry.npmjs.org/qs/-/qs-6.7.0.tgz#41dc1a015e3d581f1621776be31afb2876a9b1bc"
@@ -6025,15 +6040,15 @@ react-is@^16.12.0, react-is@^16.6.0, react-is@^16.7.0, react-is@^16.8.1:
   resolved "https://registry.npmjs.org/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
 
-react-keyframes@^0.2.3:
-  version "0.2.3"
-  resolved "https://registry.npmjs.org/react-keyframes/-/react-keyframes-0.2.3.tgz#1dca7e5684b36718f8080c7cf9bf24ce750b1b38"
-  integrity sha512-bR5Fc6KbdkB62TYNjMP7otlNP3J+4Pmi9HeHxeETiuo6qZg6cdxUe/ZV1+QVvvFccMCap4C84XpFXP/UMhgq3g==
+"react-keyframes@git@github.com:vercel/react-keyframes.git@lastest":
+  version "1.0.0-canary.3"
+  resolved "https://registry.npmjs.org/react-keyframes/-/react-keyframes-1.0.0-canary.3.tgz#ee048a75aa25f12fb17242af3aa0e03a3bb0c95c"
+  integrity sha512-2HE+uahWUcHF1gVyVaUVTLid4H5/RPtAAVLZ31mM0Xa2ltCQ711FyWm3561kFm1AnVOduc4h6LOJLtxs1AOdSw==
 
 react-query@^2.15.4:
-  version "2.17.2"
-  resolved "https://registry.npmjs.org/react-query/-/react-query-2.17.2.tgz#d9fd7299eb7bef388ffe8c314c5fa84928ca7af0"
-  integrity sha512-VB3SU9rJQkumEJQF3z0ZzPGdxPz6WEs0Q5CB4gEk/jUp3u3vWd7di6LJJ7gD0uAZs+yiooXbtKNTGnLg9NPrew==
+  version "2.18.0"
+  resolved "https://registry.npmjs.org/react-query/-/react-query-2.18.0.tgz#f8ca6a401c6520c746945fa96e43dd72aeb38d65"
+  integrity sha512-QFT2i4P2xWQoNJ9pxOi4kyqt/EYsfc4oS7EP8CWtOjOkfVOKd/mcwA51CbdsN80LOdklvXqCV+h+smrkZ8lYEg==
   dependencies:
     "@babel/runtime" "^7.5.5"
 

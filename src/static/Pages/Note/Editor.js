@@ -11,7 +11,7 @@ const EditorPage = () => {
   const location = useLocation()
   const params = useParams()
   const [ title, setTitle ] = useState('')
-  const [ editorState, setEditorState ] = useState(null)
+  const [ contentJSON, setContentJSON ] = useState(null)
 
   const isEdit = location.pathname.includes('/edit')
   const id = isEdit ? params.id : createRandomId()
@@ -21,18 +21,7 @@ const EditorPage = () => {
       API.note(id)
         .then(data => {
           setTitle(data.title)
-          setEditorState(
-            EditorState.createWithContent(
-              convertFromRaw(
-                JSON.parse(data.content)
-              )
-            )
-          )
-        })
-        .catch(e => {
-          setEditorState(
-            EditorState.createEmpty()
-          )
+          setContentJSON(data.content)
         })
     }
   }, [])
@@ -73,7 +62,7 @@ const EditorPage = () => {
     }
   }
 
-  if (isEdit && !editorState) {
+  if (isEdit && !contentJSON) {
     return <div>Loading...</div>
   }
 
@@ -89,7 +78,7 @@ const EditorPage = () => {
       <Editor 
         onSubmit={handleSubmit}
         editorConfig={{
-          editorState
+          contentJSON
         }}
       />
     </div>

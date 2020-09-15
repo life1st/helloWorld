@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react'
-import { Editor, EditorState } from 'draft-js'
+import { Editor, EditorState, convertFromRaw, } from 'draft-js'
 import 'draft-js/dist/Draft.css'
 import css from './inde.scss'
 import cls from 'classnames'
@@ -10,8 +10,12 @@ const myEditor = ({
   editorConfig = {}
 }) => {
   const [ editorState, setEditorState ] = useState(
-    editorConfig.editorState
-    ? editorConfig.editorState
+    editorConfig.contentJSON
+    ? EditorState.createWithContent(
+        convertFromRaw(
+          JSON.parse(editorConfig.contentJSON)
+        )
+      )
     : EditorState.createEmpty()
   )
   const editorRef = useRef(null)

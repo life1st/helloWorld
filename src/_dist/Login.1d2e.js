@@ -1,0 +1,2 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[2],{245:function(n,e,t){"use strict";t.r(e);var c=t(0),o=t.n(c),a=t(28),u=t(2);e.default=function(){var n=Object(u.f)();return o.a.createElement("div",null,o.a.createElement("p",null,"Login"),o.a.createElement(a.a,{onLoginSuccess:function(e){console.log(e),n.push("/")}}))}}}]);
+//# sourceMappingURL=Login.1d2e.js.map

@@ -3,7 +3,6 @@ import { useQuery } from 'react-query'
 import { API } from '../../utils/Api'
 import { useParams, useHistory } from 'react-router-dom'
 import Editor from '../../components/Editor'
-import { EditorState, convertFromRaw } from 'draft-js'
 import css from './index.scss'
 
 const NotePage = () => {
@@ -21,9 +20,6 @@ const NotePage = () => {
     return (<div>Loading...</div>)
   }
   const { user } = data
-  const editorState = EditorState.createWithContent(
-    convertFromRaw(JSON.parse(data.content))
-  )
 
   const handleEdit = () => {
     history.push(`/note/${id}/edit`)
@@ -47,7 +43,7 @@ const NotePage = () => {
       <Editor
         editorConfig={{
           readOnly: true,
-          editorState
+          contentJSON: data.content
         }}
       />
       <div>

@@ -3,7 +3,7 @@ import Editor from '../../components/Editor'
 import { API } from '../../utils/Api'
 import { createRandomId } from '../../utils/utils'
 import css from './Editor.scss'
-import { convertToRaw, convertFromRaw, EditorState } from 'draft-js'
+import { convertToRaw } from 'draft-js'
 import { useHistory, useParams, useLocation } from 'react-router-dom'
 
 const EditorPage = () => {

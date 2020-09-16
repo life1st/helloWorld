@@ -17,15 +17,8 @@ const pages = [
     ))
   ],
   [
-    'Note',
-    '/note/:id',
-    loadable(() => import(
-      './Pages/Note'
-    ))
-  ],
-  [
     'note_create',
-    '/note/:id/create',
+    '/note/create',
     loadable(() => import(
       './Pages/Note/Editor'
     ))
@@ -35,6 +28,13 @@ const pages = [
     '/note/:id/edit',
     loadable(() => import(
       './Pages/Note/Editor'
+    ))
+  ],
+  [
+    'Note',
+    '/note/:id',
+    loadable(() => import(
+      './Pages/Note'
     ))
   ],
   [

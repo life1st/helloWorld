@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
 const uuidV1 = require('uuid/v1')
+const cloudinary = require('cloudinary')
 
 const fileSchema = new mongoose.Schema({
   name: {
@@ -11,6 +12,10 @@ const fileSchema = new mongoose.Schema({
   },
   recentUsedTimes: {
     type: Array
+  },
+  public_id: {
+    type: String,
+    required: true
   }
 })
 
@@ -22,5 +27,16 @@ fileSchema.set('toJSON', {
 })
 
 const File = mongoose.model('File', fileSchema)
+
+File.prototype.getObj = async (name) => {
+   const file = await cloudinary.api.resource(name)
+   this.recentUsedTimes.push(Date.now())
+   this.save()
+   return file
+}
+
+File.prototype.upload = async (file) => {
+  
+}
 
 module.exports = { File }

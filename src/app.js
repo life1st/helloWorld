@@ -1,11 +1,12 @@
 const Koa = require('koa')
 const app = new Koa()
 const bodyParser = require('koa-bodyparser')
-const { apiInstance } = require('./router/api')
-const { connect, dbHelper } = require('./db')
 const static = require('koa-static')
 const session = require('koa-session')
+const cors = require('@koa/cors')
 const { staticPath } = require('../config')
+const { apiInstance } = require('./router/api')
+const { connect, dbHelper } = require('./db')
 const fsp = require('fs').promises
 const path = require('path')
 
@@ -22,7 +23,19 @@ app
   key: 'koa:Yan',
   maxAge: 1000 * 60 * 60 * 24 // 1day
 }, app))
+.use(cors({
+  origin: ctx => {
+    const allowTable = [
+      'blog.life1st.me',
+      'localhost'
+    ]
+    if (allowTable.some(v => ctx.request.origin.includes(v))) {
+      return ctx.request.origin
+    }
+  }
+}))
 .use(async (ctx, next) => {
+  console.log(ctx.request.origin)
   if (checkIfIgnore(ctx.req.url)) {
     ctx.status = 418
     return

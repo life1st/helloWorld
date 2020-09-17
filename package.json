@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/life1st/helloWorld#readme",
   "dependencies": {
+    "@koa/cors": "^3.1.0",
     "@koa/router": "^8.0.5",
     "@loadable/component": "^5.13.1",
     "aes-js": "^3.1.2",

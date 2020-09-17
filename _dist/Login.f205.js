@@ -1,0 +1,2 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[2],{244:function(e,n,t){"use strict";t.r(n);var a=t(0),c=t.n(a),o=t(28),u=t(2);n.default=function(){var e=Object(u.f)();return c.a.createElement("div",null,c.a.createElement("p",null,"Login"),c.a.createElement(o.a,{onLoginSuccess:function(n){console.log(n),userState.changeState(n),e.push("/")}}))}}}]);
+//# sourceMappingURL=Login.f205.js.map

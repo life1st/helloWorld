@@ -6,7 +6,7 @@ const HtmlPlugin = require('html-webpack-plugin')
 const autoprefixer = require('autoprefixer')
 const { CleanWebpackPlugin: CleanPlugin } = require('clean-webpack-plugin')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
-const { root } = require('../../config')
+const { root, staticPath } = require('../../config')
 const isDev = process.env.NODE_ENV === 'dev'
 const isLocal = process.env.ENV_LOCAL
 
@@ -18,7 +18,7 @@ module.exports = {
   output: {
     filename: isDev ? '[name].bundle.js' : '[name].[hash:6].js',
     chunkFilename: isDev ? '[name].bundle.js' : '[name].[chunkhash:4].js',
-    path: isDev ? path.join(root, '/src/static/dist') : path.join(root, '/src/_dist'),
+    path: isDev ? path.join(root, '/src/static/dist') : path.join(staticPath),
     publicPath: '/'
   },
   node: { fs: 'empty' },

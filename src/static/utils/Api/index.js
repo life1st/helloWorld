@@ -1,6 +1,8 @@
 import axios from 'axios'
-import { isDev } from '../consts'
-
+const href = window.location.href
+if (href.includes('/blog.life1st.me')) {
+  axios.defaults.baseURL = 'https://intro.life1st.me'
+}
 const note = (id) => {
   const url = '/api' + (id ? `/note/${id}` : '/notes')
 

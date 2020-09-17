@@ -29,11 +29,11 @@ jobs:
       shell: bash
     - run: npm run build:static
       shell: bash
-    - run: mv ./src/_dist/* ./
+    - run: mv ./_dist/* ./
       shell: bash
     - run: rm -rf ./node_modules
       shell: bash
-    - run: rum -rf ./src
+    - run: rm -rf ./src
       shell: bash
     - run: git add .
       shell: bash

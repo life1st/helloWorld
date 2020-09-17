@@ -1,12 +1,14 @@
+require('dotenv').config()
 const path = require('path')
 const webpack = require('webpack')
-const isDev = process.env.NODE_ENV === 'dev'
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const HtmlPlugin = require('html-webpack-plugin')
 const autoprefixer = require('autoprefixer')
 const { CleanWebpackPlugin: CleanPlugin } = require('clean-webpack-plugin')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const { root } = require('../../config')
+const isDev = process.env.NODE_ENV === 'dev'
+const isLocal = process.env.ENV_LOCAL
 
 module.exports = {
   mode: isDev ? 'development' : 'production',
@@ -100,7 +102,7 @@ module.exports = {
     isDev && new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
     }),
-    !isDev && new BundleAnalyzerPlugin()
+    (!isDev && isLocal) && new BundleAnalyzerPlugin()
   ].filter(Boolean),
   devServer: {
     contentBase: path.join(root, '/src/static'),

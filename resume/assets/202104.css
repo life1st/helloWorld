@@ -2,7 +2,7 @@
 .content{max-width: 768px;width:90%;margin:20px auto;}
 
 section h2 {margin:10px 0 5px;border-bottom: 1px solid black;padding-bottom: 2px;font-weight: 500;font-size: 22px;}
-section p {line-height: 20px;font-size: 15px;}
+section p {line-height: 18px;font-size: 15px;margin: 2px 0;}
 .phone span {display: inline-block;margin-right: 4px;}
 time{float: right;margin-right: 0.2em;font-size: 15px;font-weight:normal;line-height: inherit;}
 
@@ -22,7 +22,7 @@ ul {margin-left: 18px;}
 li {margin-bottom: 2px; font-size: 15px;}
 .information {display: flex;justify-content: space-between;}
 .personal-info {display: flex;justify-content: space-between;flex-direction: column;}
-p.name {font-size: 33px;padding: 2px 0 16px;font-weight: 700;}
+p.name {font-size: 28px;padding: 2px 0 16px;font-weight: 500;}
 .skill span { text-decoration: underline;}
 .demo {display: inline-block;background-color: #f6f6f6;padding: 1px 2px;text-indent: 0;font-size: 12px;line-height: 12px;border: 1px solid #b3b3b3;border-radius: 5px;position: relative;top: -4px;user-select: none;}
 a.demo:hover {color: #7a7a7a;}
@@ -31,7 +31,7 @@ a.demo:hover {color: #7a7a7a;}
 .exp p::after,
 .award p::after,
 .project h4::after { content: ' ';display: block;clear: both;}
-@media (max-width: 500px) {
+@media (max-width: 560px) {
   .information { display: block;}
   .contact-info { margin-top: 6px;}
 }

@@ -13,7 +13,7 @@ time{float: right;margin-right: 0.2em;font-size: 15px;font-weight:normal;line-he
 .exp h3:nth-child(2) {margin-top: 0;}
 .exp h4 {font-size: 14px;margin-top: 3px;}
 .exp h4 .time {font-weight: 500;}
-.exp p, .project p, .exp li{font-size: 14px;margin-top: 2px;}
+.exp p, .project p, .exp li{font-size: 14px;margin-top: 4px;}
 .type { width: 2.6em;}
 .project p {text-indent: 2em;}
 a {font-size: 16px;font-weight: normal;color:#000;white-space: nowrap;text-decoration: none;}

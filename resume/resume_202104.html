@@ -42,8 +42,8 @@
         <li>App 混合部分使用 React 开发，并且使用公司内部框架与 Native 部分交互。</li>
       </ul>
       <p>负责处理日常用户反馈及运营需求。解决 issue 100+；上线了2018社区内容盘点<a href="https://m.douban.com/life2018" class="demo" target="_blank">link</a>、2019个人书影音报告<a href="https://m.douban.com/standbyme/annual2019" target="_blank" class="demo">link</a>、2019年度榜单<a href="https://movie.douban.com/annual/2019" target="_blank" class="demo">link</a>、2020社区内容盘点<a href="https://m.douban.com/overview/2020" target="_blank" class="demo">link</a>等多个活动项目。</p>
-      <p>负责开发和维护微信小程序：豆瓣评分。使用类 React 语法的 Taro 进行开发。负责了榜单页、条目页改版，视频动态的优化，搜索功能的升级。另外，还将登录组件从微信小程序重构为 Taro 版本，实现多端复用。</p>
-      <p>在 Leader 支持下主动推动完成了 m站豆列、相册功能的历史遗留问题的补齐和完善。</p>
+      <p>负责开发和维护小程序（豆瓣评分）。使用类 React 语法的 Taro 进行开发。除日常开发外，还优化了动态中视频播放的体验；将登录组件从 wxml 重构为 Taro 版本，实现多端复用。</p>
+      <p>在 Leader 支持下主动推动完成了 m站豆列、相册功能的历史遗留问题的补齐和完善；在 Flash 停止服务前，主动将豆瓣音乐，豆瓣游戏等项目中的上传组件替换成 HTML5 的实现。</p>
       <p>利用厂内基础设施开发了在 Web 上使用自定义字体的库，根据字体 lib 生成 scss 文件，业务上通过引用 npm package 使用。简化了复杂度，方便统一管理。</p>
     </div>
     <div>
@@ -51,7 +51,7 @@
         <span class="type">工作</span>
         <time>2018.03 -  2018.12</time>
       </h3>
-      <p>公司主要做境外在线教育业务。公司规模50人左右，开发团队20人。</p>
+      <p class="summary">公司主要做境外在线教育业务。公司规模50人左右，开发团队20人。</p>
       <p>主要负责对接上课直播系统的产品需求及开发，使用 Vue & Vuex 开发，主要功能包含：基于 Websocket 实现的文字聊天，PPT展示及涂画等课堂信息更新；基于 WebRTC 的多用户实时视频和屏幕共享。</p>
       <p>另外也负责其周边支持项目的前端开发。例如:</p>
       <ul>
@@ -64,25 +64,27 @@
         <span class="type">实习</span>
         <time>2017.07 - 2017.12</time>
       </h3>
-      <p>公司主要为政府，银行等机构提供软件开发服务。参与到的项目有金融信息服务中心，科技企业服务平台等。</p>
+      <p class="summary">公司主要为政府，银行等机构提供软件开发服务。参与到的项目有金融信息服务中心，科技企业服务平台等。</p>
       <p>负责过内容发布，用户中心，知识产权服务购买等模块的前端开发工作。</p>
-      <p>使用过 jQuery & artTemplate 做内容渲染，eCharts 渲染图表。同时参与过前后端分离开发&不分离开发模式项目。独立完成单页多选项卡<a href="https://life1st.github.io/Functions/tab-ui/index.html" target="_blank" class="demo">Demo</a>的功能。</p>
+      <p>使用过 jQuery & artTemplate，eCharts。同时参与过前后端分离开发&不分离开发模式项目。独立完成了多个基础功能的开发。</p>
     </div>
   </section>
   <section class="project">
     <h2>个人项目</h2>
-    <h4>Node Blog<a href="https://github.com/life1st/nodeDemos/tree/master/login" class="demo">Link</a></h4>
-    <p>使用 NodeJS + MongoDB 实现的简单博客系统。支持用户登陆、注册，文本的增删改查。提供 RESTful API，前端使用 React，部署在 serverless（Vercal） 服务上。在实现文件上传时，学习到 Nginx 默认会限制请求的 body size，可通过 client_max_body_size 字段配置。</p>
-
+    <p>Node Blog：使用 NodeJS + MongoDB 实现的简单博客系统。支持用户登陆、注册，文本的增删改查。提供 RESTful API，前端使用 React，部署在 serverless（Vercal） 服务上。<a href="https://github.com/life1st/nodeDemos/tree/master/login" class="demo">Link</a></p>
+    <p>使用 Node 实现过文件上传服务，学习到 Nginx 默认会限制请求的 body size，可通过 client_max_body_size 字段配置。</p>
+    <p>Air-Matters-Web：使用 Vue 实现的类似“在意空气”客户端的版本。<a href="https://air.life1st.me/" target="_blank" class="demo">link</a></p>
+    <p>实现了一个在前端转换 torrent 文件到 magnet 链接的服务，用于日常下载电影时使用。<a href="https://github.com/life1st/ttm" target="_blank" class="demo">link</a></p>
   </section>
   <section class="skill">
     <h2>专业技能</h2>
     <ul>
       <li>熟悉 HTML5，CSS3。熟练使用 Sass，了解其他预处理器。能够实现复杂布局和动画。</li>
-      <li>熟练使用原生 JS，熟悉 ES6 语法，能够不依赖第三方库完成 DOM 交互。工作中对 React 有较多的使用，理解重要概念，熟悉 Hooks，Class Components。有实际项目经验，能够快速进入工作状态。</li>
-      <li>日常使用 Git 进行版本控制，了解 Http 协议，Web 常见攻击方式以及防护措施，常见的浏览器兼容问题。有一定的性能优化经验。</li>
-      <li>了解 NodeJs。有基于 Koa + MongoDB 开发个人web项目的经验。</li>
-      <li>热爱 Web 开发。对工作有责任心，能合理的理解需求，推进整体进度。</li>
+      <li>熟练使用原生 JS，熟悉 ES6 语法，能够不依赖第三方库完成 DOM 交互。工作中对 React 有较多的使用，理解重要概念，熟悉 Hooks，Class Components。能够快速进入工作状态。</li>
+      <li>了解 Http 协议，Web 常见攻击方式以及防护措施，常见的浏览器兼容问题。有一定的性能优化经验。</li>
+      <li>了解 NodeJs。有使用 Koa + MongoDB 开发的个人 web项目的经验。</li>
+      <li>对工作有责任心，会主动修复完善产品逻辑上的纰漏；能合理的理解需求，安排时间，推进整体进度。</li>
+      <li>热爱 Web 开发。在 Github 中有若干个人项目，乐于通过代码解决日常发现的问题。</li>
     </ul>
   </section>
   <!-- <div class="download-link">

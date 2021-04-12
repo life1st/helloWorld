@@ -2,28 +2,25 @@
 .content{max-width: 768px;width:90%;margin:20px auto;}
 
 section h2 {margin:10px 0 5px;border-bottom: 1px solid black;padding-bottom: 2px;font-weight: 500;font-size: 22px;}
-section p {line-height: 18px;font-size: 15px;margin: 2px 0;}
+section p, section li, section a {line-height: 18px;font-size: 14px;margin: 4px 0;}
+section.information p {line-height: 21px;font-size: 15px;margin: 0;}
+section.information p.name {font-size: 28px;padding: 2px 0 16px;font-weight: 500;}
+.exp p::before,.project p::before { content: '-'; display: inline-block; margin-right: 4px;}
+.exp li,.project li {margin: 0;}
+p.summary::before {display: none;}
+.exp ul,.project ul {margin-left: 1.5em;}
 .phone span {display: inline-block;margin-right: 4px;}
-time{float: right;margin-right: 0.2em;font-size: 15px;font-weight:normal;line-height: inherit;}
+time{float: right;margin-right: 0.2em;font-size: 14px;font-weight:normal;line-height: inherit;}
 
-.project h4{font-size: 16px;line-height: 22px;margin: 6px 0 2px;font-weight: normal;padding-left: 2px;}
-.project h4::before { content:' ';border-left: 2px solid #000;display: inline-block;height: .9em;width: 6px;position: relative;top: 3px;}
-.unset-list {list-style-type: circle;padding-left: 1em;}
 .exp h3 {font-size: 16px;font-weight: 600;margin-top: 8px;margin-bottom: 4px;}
-.exp h3:nth-child(2) {margin-top: 0;}
-.exp h4 {font-size: 14px;margin-top: 3px;}
-.exp h4 .time {font-weight: 500;}
-.exp p, .project p, .exp li{font-size: 14px;margin-top: 4px;}
 .type { width: 2.6em;}
-.project p {text-indent: 2em;}
+
 a {font-size: 16px;font-weight: normal;color:#000;white-space: nowrap;text-decoration: none;}
 a:hover {color:#BEBEBE;}
 ul {margin-left: 18px;list-style-type: circle;}
 li {margin-bottom: 2px; font-size: 15px;}
 .information {display: flex;justify-content: space-between;}
 .personal-info {display: flex;justify-content: space-between;flex-direction: column;}
-p.name {font-size: 28px;padding: 2px 0 16px;font-weight: 500;}
-.skill span { text-decoration: underline;}
 .demo {display: inline-block;background-color: #f6f6f6;padding: 1px 2px;text-indent: 0;font-size: 12px;line-height: 12px;border: 1px solid #b3b3b3;border-radius: 5px;position: relative;top: -4px;user-select: none;}
 a.demo:hover {color: #7a7a7a;}
 .type { margin-left: 4px;font-size: 12px;color: #333;display: inline-block;width: 4.6em;border: 1px solid #BEBEBE;border-radius: 2px;line-height: 14px; text-align: center;margin-right: 4px;vertical-align: middle;position: relative;bottom: 1px;user-select: none;}

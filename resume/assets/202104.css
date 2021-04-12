@@ -18,7 +18,7 @@ time{float: right;margin-right: 0.2em;font-size: 15px;font-weight:normal;line-he
 .project p {text-indent: 2em;}
 a {font-size: 16px;font-weight: normal;color:#000;white-space: nowrap;text-decoration: none;}
 a:hover {color:#BEBEBE;}
-ul {margin-left: 18px;}
+ul {margin-left: 18px;list-style-type: circle;}
 li {margin-bottom: 2px; font-size: 15px;}
 .information {display: flex;justify-content: space-between;}
 .personal-info {display: flex;justify-content: space-between;flex-direction: column;}
@@ -27,10 +27,7 @@ p.name {font-size: 28px;padding: 2px 0 16px;font-weight: 500;}
 .demo {display: inline-block;background-color: #f6f6f6;padding: 1px 2px;text-indent: 0;font-size: 12px;line-height: 12px;border: 1px solid #b3b3b3;border-radius: 5px;position: relative;top: -4px;user-select: none;}
 a.demo:hover {color: #7a7a7a;}
 .type { margin-left: 4px;font-size: 12px;color: #333;display: inline-block;width: 4.6em;border: 1px solid #BEBEBE;border-radius: 2px;line-height: 14px; text-align: center;margin-right: 4px;vertical-align: middle;position: relative;bottom: 1px;user-select: none;}
-/*clear fix*/
-.exp p::after,
-.award p::after,
-.project h4::after { content: ' ';display: block;clear: both;}
+
 @media (max-width: 560px) {
   .information { display: block;}
   .contact-info { margin-top: 6px;}

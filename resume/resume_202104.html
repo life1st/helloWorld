@@ -36,14 +36,15 @@
         <span class="type">工作</span>
         <time>2018.12 至今</time>
       </h3>
-      <p>主要负责小组业务线，豆瓣m站项目及豆瓣App中混合开发部分的前端开发工作。</p>
+      <p>主要负责小组业务线，豆瓣m站项目及豆瓣App中部分混合开发的前端开发工作。</p>
       <ul>
-        <li>部分产品使用 jQuery 开发，同时项目中也有页面路由的 Python 部分需要负责。</li>
-        <li>App 混合部分使用 React 开发，并使用自研框架和 Native 部分进行交互。</li>
+        <li>部分项目使用 jQuery 开发，同时也负责部分页面路由中 Python 代码的开发。</li>
+        <li>App 混合部分使用 React 开发，并且使用公司内部框架与 Native 部分交互。</li>
       </ul>
-      <p>负责处理日常用户反馈及运营需求，解决 issue 100+，上线了 2018 社区内容盘点、2019 个人书影音报告、2019 年度榜单、2020 社区内容盘点等活动项目。</p>
-      <p>负责开发和维护微信小程序：豆瓣评分。使用类 React 语法的 Taro 进行开发。榜单页、条目页及登录组件改版，视频动态的优化，搜索功能的升级。</p>
-      <p>主动推动了m站豆列、相册功能历史遗留问题的补齐和完善。</p>
+      <p>负责处理日常用户反馈及运营需求。解决 issue 100+；上线了2018社区内容盘点<a href="https://m.douban.com/life2018" class="demo" target="_blank">link</a>、2019个人书影音报告<a href="https://m.douban.com/standbyme/annual2019" target="_blank" class="demo">link</a>、2019年度榜单<a href="https://movie.douban.com/annual/2019" target="_blank" class="demo">link</a>、2020社区内容盘点<a href="https://m.douban.com/overview/2020" target="_blank" class="demo">link</a>等多个活动项目。</p>
+      <p>负责开发和维护微信小程序：豆瓣评分。使用类 React 语法的 Taro 进行开发。负责了榜单页、条目页改版，视频动态的优化，搜索功能的升级。另外，还将登录组件从微信小程序重构为 Taro 版本，实现多端复用。</p>
+      <p>在 Leader 支持下主动推动完成了 m站豆列、相册功能的历史遗留问题的补齐和完善。</p>
+      <p>利用厂内基础设施开发了在 Web 上使用自定义字体的库，根据字体 lib 生成 scss 文件，业务上通过引用 npm package 使用。简化了复杂度，方便统一管理。</p>
     </div>
     <div>
       <h3>新加坡艾克伦公司北京代表处 / 前端开发工程师
@@ -55,7 +56,7 @@
       <p>另外也负责其周边支持项目的前端开发。例如:</p>
       <ul>
         <li>课件上传系统：使用 Canvas 处理图片尺寸、质量，根据EXIF旋转方向。上传过程和上课系统的交互。</li>
-        <li>课程管理系统：基于 Vue2.0 全家桶，实现教育机构成员管理，课程内容管理及数据统计等模块。</li>
+        <li>课程管理系统：基于 Vue2.0 全家桶，实现成员管理，内容管理及数据统计等模块，支持 i18n。</li>
       </ul>
     </div>
     <div>
@@ -71,23 +72,16 @@
   <section class="project">
     <h2>个人项目</h2>
     <h4>Node Blog<a href="https://github.com/life1st/nodeDemos/tree/master/login" class="demo">Link</a></h4>
-    <p>
-      使用 NodeJS + MongoDB 实现的简单博客系统。支持用户登陆、注册，文本的增删改查。提供 RESTful API，前后端分离。在实现文件上传时，学习到 Nginx 默认会限制请求的 body size，可通过 client_max_body_size 字段配置。
-    </p>
-    <h4>百度Web前端技术学院
-      <a href="https://github.com/life1st/baidu_IFE_study_code" class="demo" target="_blank">Link</a>
-    </h4>
-    <p>完成2017 HTML/CSS 学院，Js 学院所有任务。表单验证，UI 组件，NodeJs 相关任务。2018 任务中使用 san 框架实现基础组件任务。
-    </p>
+    <p>使用 NodeJS + MongoDB 实现的简单博客系统。支持用户登陆、注册，文本的增删改查。提供 RESTful API，前端使用 React，部署在 serverless（Vercal） 服务上。在实现文件上传时，学习到 Nginx 默认会限制请求的 body size，可通过 client_max_body_size 字段配置。</p>
+
   </section>
   <section class="skill">
     <h2>专业技能</h2>
     <ul>
-      <li>熟悉 HTML5，CSS3。熟练使用 Sass ，对其他预处理器有一定了解。可以实现复杂布局和动画。</li>
-      <li>熟练使用原生 JS，熟悉 ES6 语法，能够不依赖第三方库完成 DOM 交互。</li>
-      <li>了解 Vue 2.0，理解重要概念。目前工作对 React 有较多的使用，熟悉 Hooks，Class Components 的使用。有实际项目经验，可以快速进入工作状态。</li>
-      <li>了解 Http 协议，Web 常见攻击方式以及防护措施，常见的浏览器兼容问题。有一定的性能优化经验。</li>
-      <li>了解 NodeJs。有基于 Koa + MongoDB 开发个人后端项目的经验。</li>
+      <li>熟悉 HTML5，CSS3。熟练使用 Sass，了解其他预处理器。能够实现复杂布局和动画。</li>
+      <li>熟练使用原生 JS，熟悉 ES6 语法，能够不依赖第三方库完成 DOM 交互。工作中对 React 有较多的使用，理解重要概念，熟悉 Hooks，Class Components。有实际项目经验，能够快速进入工作状态。</li>
+      <li>日常使用 Git 进行版本控制，了解 Http 协议，Web 常见攻击方式以及防护措施，常见的浏览器兼容问题。有一定的性能优化经验。</li>
+      <li>了解 NodeJs。有基于 Koa + MongoDB 开发个人web项目的经验。</li>
       <li>热爱 Web 开发。对工作有责任心，能合理的理解需求，推进整体进度。</li>
     </ul>
   </section>
